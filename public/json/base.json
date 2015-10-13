@@ -1,0 +1,50 @@
+[
+	{
+		"id": 13,
+		"name": "Piso 1",
+		"price": 300.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
+	    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	},
+	{	
+		"id": 232,
+		"name": "Piso 2",
+		"price": 400.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+	   	"pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	},
+	{	
+		"id": 3233,
+		"name": "Piso 3",
+		"price": 500.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
+	    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	},
+	{	
+		"id": 32332,
+		"name": "Piso 3",
+		"price": 500.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
+	    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	},
+	{	
+		"id": 323321,
+		"name": "Piso 3",
+		"price": 500.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
+	    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	},
+	{	
+		"id": 3233267,
+		"name": "Piso 3",
+		"price": 500.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
+	    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+	}
+]

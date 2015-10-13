@@ -1,0 +1,40 @@
+[ 	
+	{
+		"seccionName": "Adicional 1",
+		"elementos":[
+			{
+				"id": 34567,
+				"name": "Adicional 00",
+				"price": 300.00,
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			    "img": "http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
+			}
+		]
+	},
+	{
+		"seccionName": "Adicional 2",
+		"elementos":[
+			{
+				"id": 1856,
+				"name": "Adicional 10",
+				"price": 300.10,
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			    "img": "http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
+			},
+			{	
+				"id": 23245,
+				"name": "Adicional 11",
+				"price": 400.00,
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			    "img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg"
+			},
+			{	
+				"id": 30987,
+				"name": "Adicional 12",
+				"price": 500.00,
+				"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg"
+			}
+		]
+	}
+]

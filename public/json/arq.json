@@ -1,0 +1,21 @@
+[
+	{
+		"id": 123424214,
+		"name": "Aqu 1",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.tallerhabitat.mx/assets/images/logo_entrada.png"
+	},
+	{	
+		"id": 29534,
+		"name": "Aqu 2",
+		"price": 400.00,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.tallerhabitat.mx/assets/images/logo_entrada.png"
+	},
+	{	
+		"id": 3234451,
+		"name": "Aqu 3",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	    "img": "http://www.tallerhabitat.mx/assets/images/logo_entrada.png"
+	}
+]

@@ -1,0 +1,44 @@
+<!--   Wizard Content   -->
+<div id="LogIn" class="col-sm-6 col-sm-offset-3 text-center">
+
+      <h6 class="info-text">Seleleciona el tipo de departamento.</h6>
+
+      <form name="LogIn" class="form-signin"  ng-submit="submit(LogIn.$valid)" novalidate>
+
+          <select class="form-control ng-valid" title="apartmentTipe" 
+                  ng-options="apartment.tipe for apartment in apartments" ng-model="selectedData" ng-change="getApartmentTipe(selectedData)"  required>
+                  <option value="">Seleleciona tu torre</option> 
+          </select>
+              
+          <select class="form-control" title="apartmentNumber"  
+                     ng-show="selectedData" ng-model="userApartmenteNumber"
+                    ng-options="numbers for numbers in selectedData.numbers"
+                    ng-change="getApartmentNumber(userApartmenteNumber)" required>
+                    <option value="">Seleleciona el tipo de apartamento</option>  
+          </select>
+
+          <label for="inputDepto" class="sr-only" ng-show="selectedData">Department Number</label>
+          <input name="depto" type="number" id="inputDepto" class="form-control" placeholder="Department Number" ng-model="userDepto" ng-show="selectedData"   required >
+          <p ng-show="LogIn.depto.$invalid && !LogIn.depto.$pristine " class="text-danger"> <small>Número de departamento no valido.</small></p>                                    
+
+          <label for="inputEmail" class="sr-only" ng-show="selectedData">Email address</label>
+          <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" ng-model="userEmail" ng-show="selectedData"   required >
+          <p ng-show="LogIn.email.$invalid && !LogIn.email.$pristine " class="text-danger"> <small>Ingrese un e-mail valido.</small></p>
+
+
+          <label for="inputPassword" class="sr-only" ng-show="selectedData">Password</label>
+          <input type="Password" id="inputPassword" class="form-control" placeholder="Password" ng-model="userPassword" ng-show="selectedData" required>
+
+          
+          <button class="btn btn-fill btn-warning btn-wd btn-sm btn-form" type="submit" ng-click="user.print" ng-show="LogIn.$valid" >Inicia</button>
+
+          <p ng-show="LogIn.$invalid && !LogIn.$pristine " class="text-info"> <small>Complete para Iniciar.</small></p>
+
+
+
+      </form>     
+</div><!--   END Wizard Content    -->
+
+
+
+
