@@ -13,12 +13,12 @@ class CatalogoController extends Controller
     {
         //return Catalogo::with('predeterminado','escoger','escogeroptions','opcional','arquitecto','tax')->get();
         $catalogos = Catalogo::all();
-        $catalogo = $catalogos->load('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax');
-        return $catalogo; 
+        return $catalogos; 
     }
  
     public function show($id)
     {
-        return Catalogo::with('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax')->findOrFail($id);
+        //return Catalogo::with('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax')->findOrFail($id);
+        return Catalogo::find($id);
     }
 }

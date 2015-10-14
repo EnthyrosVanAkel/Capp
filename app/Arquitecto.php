@@ -8,5 +8,5 @@ class Arquitecto extends Model
 {
     //
     protected $table = 'arquitectos';
-    protected $hidden = ['id','catalogo_id','created_at','updated_at'];
+    protected $hidden = ['id','created_at','updated_at'];
 }

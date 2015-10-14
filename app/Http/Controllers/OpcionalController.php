@@ -12,11 +12,13 @@ class OpcionalController extends Controller
     //
         public function index()
     {
-        return Opcional::with('opcionaloptions')->get();
+        //return Opcional::with('opcionaloptions')->get();
+        return Opcional::all();
     }
  
     public function show($id)
     {
-        return Opcional::with('opcionaloptions')->findOrFail($id);
+        //return Opcional::with('opcionaloptions')->findOrFail($id);
+        return Opcional::find($id);
     }
 }
