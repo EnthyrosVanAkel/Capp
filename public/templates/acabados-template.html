@@ -2,7 +2,7 @@
 <ul class="nav nav-pills" >
   <li class="tab-size" style="width:<%getTabSize()%>%;"  ng-repeat="section in sectionsData" ng-class="{active:sectionActive($index)}">
     <a href="#/" data-toggle="tab">
-      <%section.seccionName%>
+      <%section.seccion%>
     </a>
   </li>
 </ul>  
@@ -15,10 +15,10 @@
 
     <!-- Ficha -->
     <div class="thumbnail col-sm-4" ng-repeat="item in section.elementos">
-      <img ng-src="<%item.img%>" width="150px" >
+      <img ng-src="<%item.url_img%>" width="150px" >
       <div class="caption">
         <h4>
-          <samp><%item.name%></samp>
+          <samp><%item.nombre%></samp>
           <small class="text-right"><%item.basePrice |priceFilter %></small>
         </h4>
         <!-- <p class="text-left">

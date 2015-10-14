@@ -235,7 +235,7 @@ app.service('billService', function(secciontFactory) {
     this.getTaxes = function(){
         this.subTotalBill += this.subTotalAditional;
         for (var i = this.taxesArray.length - 1; i >= 0; i--) {
-            var tax = this.taxesArray[i].tax / 100;
+            var tax = this.taxesArray[i].monto;
             this.taxesArray[i].taxAplay = this.subTotalBill * tax;
         };
     };
@@ -295,13 +295,13 @@ app.factory('secciontFactory',function($http){
       },
       getS1: function(callback){
         getData(function(data) {
-          var baseData = data.Predeterminados;
+          var baseData = data.predeterminados;
           callback( baseData );
         });
       },
       getS2: function(callback){
         getData(function(data) {
-          var baseData = data.elejir;
+          var baseData = data.escoger;
           callback( baseData );
         });
       },
@@ -490,11 +490,11 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
                 var section = $scope.rawData[i];
                 for(var j in section.elementos ){
 
-                    var elemento = section.elementos[j];
+                    var elemento = section.escogeroptions[j];
                     elemento.checked = (j == 0) ? true : false;
-                    elemento.basePrice = (j == 0) ? 0 : ( elemento.price  - section.elementos[0].price);
+                    elemento.basePrice = (j == 0) ? 0 : ( elemento.precio  - section.escogeroptions[0].precio);
                     elemento.disabled = (elemento.price >= 0) ? false : true;
-                    elemento.section = section.seccionName;
+                    elemento.section = section.seccion;
 
                     if (elemento.checked) {
                         billService.add(elemento);
@@ -557,13 +557,13 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
 
             for(var i in $scope.rawData ){
                 var section = $scope.rawData[i];
-                for(var j in section.elementos ){
+                for(var j in section.opcionalaoptios ){
 
-                    var elemento = section.elementos[j];
+                    var elemento = section.opcionalaoptios[j];
                     elemento.checked =  false;
                     elemento.disabled = false;
-                    elemento.basePrice = elemento.price;
-                    elemento.section = section.seccionName;
+                    elemento.basePrice = elemento.precio;
+                    elemento.section = section.seccion;
 
                 };
                 section.selectedItem = -1;
