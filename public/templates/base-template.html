@@ -3,29 +3,29 @@
 <div class="col-sm-12 " >
 
       <h6 class="info-text">
-      {{baseData.seccionName}}
+      <%baseData.seccionName%>
       </h6>
 
             <div class="dataBox"  >
               <div class="media" ng-repeat="item in baseData.elementos" >
                 <div class="media-left">
                    <a href="#">
-                    <img class="media-object" ng-src="{{item.img}}" width="40px">
+                    <img class="media-object" ng-src="<%item.img%>" width="40px">
                   </a>
                 </div>
                 <div class="media-body">
                   <h4 class="col-sm-8">
                       <samp>
-                        {{item.name}}
+                        <%item.name%>
                       </samp>
                       <small class="text-right ">
-                        {{item.basePrice | priceFilter}}
+                        <%item.basePrice | priceFilter%>
                       </small>
                     </h4>
                 </div>
                 <div class="media-right">
-                  <input type="checkbox" id="{{item.id}}" ng-disabled="{{item.disabled}}" ng-checked="item.checked" ng-model="item.checked"  ng-click="updateBill(item)"/>
-                      <label for="{{item.id}}"></label>
+                  <input type="checkbox" id="<%item.id%>" ng-disabled="<%item.disabled%>" ng-checked="item.checked" ng-model="item.checked"  ng-click="updateBill(item)"/>
+                      <label for="<%item.id%>"></label>
                 </div>
               </div>
             </div>

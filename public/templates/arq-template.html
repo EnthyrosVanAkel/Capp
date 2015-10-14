@@ -1,17 +1,17 @@
 
   <div class="thumbnail col-sm-4" ng-repeat="arq in sectionsData">
-      <img ng-src="{{arq.img}}" width="150px" >
+      <img ng-src="<%arq.img%>" width="150px" >
       <div class="caption">
         <h4>
-          <samp>{{arq.name}}</samp>
+          <samp><%arq.name%></samp>
         </h4>
         <p class="text-left">
           <br/>
-          {{arq.description}}
+          <%arq.description%>
         </p>
          <div class="text-center">
-            <input type="checkbox" id="{{arq.id}}" ng-disabled="{{arq.disabled}}" ng-checked="{{arq.checked}}" ng-model="arq.checked"  ng-click="arqUpdate(arq)"/>
-            <label for="{{arq.id}}"></label>
+            <input type="checkbox" id="<%arq.id%>" ng-disabled="<%arq.disabled%>" ng-checked="<%arq.checked%>" ng-model="arq.checked"  ng-click="arqUpdate(arq)"/>
+            <label for="<%arq.id%>"></label>
         </div>
       </div>
     </div> <!-- End Ficha -->

@@ -36,13 +36,13 @@
 
                     <!--   Wizard Header   -->
                     <div class="wizard-header">
-                      <h3>{{title}} <b>COTIZADOR</b></h3>
+                      <h3><%title%> <b>COTIZADOR</b></h3>
                     </div> <!--  END Wizard Header   -->
-                    {{count}}
+                    <%count%>
                     <ul class="nav nav-pills" >
-                      <li class="tab-size" style="width:{{getSize()}}%;"  ng-repeat="nav in navArray" ng-show="isLogIn($index)" ng-class="{active:isActive($index)}">
+                      <li class="tab-size" style="width:<%getSize()%>%;"  ng-repeat="nav in navArray" ng-show="isLogIn($index)" ng-class="{active:isActive($index)}">
                         <a href="#/" data-toggle="tab">
-                          {{nav}}
+                          <%nav%>
                         </a>
                       </li>
                     </ul>  
@@ -65,7 +65,7 @@
              <div class="card wizard-footer ct-wizard-blue">
 
                       <h4 class=" col-sm-6 text-left"> Total :</h4>
-                      <h4 class=" col-sm-6 text-right">{{bill.totalBill | currency}} </h4>
+                      <h4 class=" col-sm-6 text-right"><%bill.totalBill | currency%> </h4>
 
              </div>
           </div>      

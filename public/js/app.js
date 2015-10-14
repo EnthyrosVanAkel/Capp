@@ -19,6 +19,14 @@ var apartments = [
 
 var navArray = ['Inicio de Secion','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
 
+
+app.config(
+        function($interpolateProvider) {
+        $interpolateProvider.startSymbol('<%');
+        $interpolateProvider.endSymbol('%>');
+    });
+
+
 app.config(
     function($routeProvider) {
         
@@ -59,7 +67,8 @@ app.config(
         otherwise({
             redirectTo: '/'
         });
-});
+    }
+);
 
 app.run(function(navService) {
     if (navService.count == 0) {
