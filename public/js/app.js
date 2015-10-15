@@ -50,7 +50,7 @@ app.config(
             controllerAs: 'sectionCtrl'
         }).
         when('/4', {
-            templateUrl: 'templates/acabados-template.html',
+            templateUrl: 'templates/adicionales-template.html',
             controller: 'addCtrl',
             controllerAs: 'sectionCtrl'
         }).
@@ -221,21 +221,21 @@ app.service('billService', function(secciontFactory) {
     this.calcSubTota = function(){
         this.subTotalBill = 0;
         for (var i = this.billArray.length - 1; i >= 0; i--) {
-            this.subTotalBill += this.billArray[i].price;
+            this.subTotalBill += this.billArray[i].precio;
         };
     };
 
     this.calcAditional = function(){
         this.subTotalAditional = 0;
         for (var i = this.aditionalArray.length - 1; i >= 0; i--) {
-            this.subTotalAditional += this.aditionalArray[i].price;
+            this.subTotalAditional += this.aditionalArray[i].precio;
         };
     };
 
     this.getTaxes = function(){
         this.subTotalBill += this.subTotalAditional;
         for (var i = this.taxesArray.length - 1; i >= 0; i--) {
-            var tax = this.taxesArray[i].monto;
+            var tax = this.taxesArray[i].monto/100;
             this.taxesArray[i].taxAplay = this.subTotalBill * tax;
         };
     };
@@ -295,7 +295,7 @@ app.factory('secciontFactory',function($http){
       },
       getS1: function(callback){
         getData(function(data) {
-          var baseData = data.predeterminados;
+          var baseData = data.predeterminado;
           callback( baseData );
         });
       },
@@ -451,7 +451,7 @@ app.controller('baseCtrl', function($scope, secciontFactory, billService, navSer
     secciontFactory.getS1(function(data) {
 
         if (billService.baseArray.active == false ){
-            billService.baseArray.seccionName = "Paquete Base";
+            billService.baseArray.seccion = "Paquete Base";
             billService.baseArray.elementos = [];
 
             $scope.rawData = data;
@@ -488,12 +488,12 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
 
             for(var i in $scope.rawData ){
                 var section = $scope.rawData[i];
-                for(var j in section.elementos ){
+                for(var j in section.escogeroptions ){
 
                     var elemento = section.escogeroptions[j];
                     elemento.checked = (j == 0) ? true : false;
                     elemento.basePrice = (j == 0) ? 0 : ( elemento.precio  - section.escogeroptions[0].precio);
-                    elemento.disabled = (elemento.price >= 0) ? false : true;
+                    elemento.disabled = (elemento.precio >= 0) ? false : true;
                     elemento.section = section.seccion;
 
                     if (elemento.checked) {
@@ -515,17 +515,21 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
 
     $scope.updateBill = function(section, elemento){
 
-        var oldItem = section.elementos[section.selectedItem];
-        var newIndexItem = section.elementos.indexOf(elemento);
+        var oldItem = section.escogeroptions[section.selectedItem];
+        var newIndexItem = section.escogeroptions.indexOf(elemento);
 
-        oldItem.checked = false;
+        if (oldItem != elemento){
 
+            oldItem.checked = false;
 
-        billService.delate(oldItem);
-        billService.add(elemento);
-        section.selectedItem = newIndexItem;
+            billService.delate(oldItem);
+            billService.add(elemento);
+            section.selectedItem = newIndexItem;
 
-        billService.calcBill();
+            billService.calcBill();
+        }else{
+            elemento.checked = true;
+        };
 
     };
 
@@ -557,9 +561,9 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
 
             for(var i in $scope.rawData ){
                 var section = $scope.rawData[i];
-                for(var j in section.opcionalaoptios ){
+                for(var j in section.opcionaloptions ){
 
-                    var elemento = section.opcionalaoptios[j];
+                    var elemento = section.opcionaloptions[j];
                     elemento.checked =  false;
                     elemento.disabled = false;
                     elemento.basePrice = elemento.precio;
@@ -573,6 +577,8 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
             billService.calcBill();
             billService.adicionalesArray.active = true;
 
+            console.log($scope.sectionsData);
+
         };
 
         navService.subCount.count = 0;
@@ -582,17 +588,17 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
 
     $scope.updateBill = function(section, elemento){
 
-        var newIndexItem = section.elementos.indexOf(elemento);
+        var newIndexItem = section.opcionaloptions.indexOf(elemento);
 
         if (newIndexItem == section.selectedItem) {
-            var oldItem = section.elementos[section.selectedItem];
+            var oldItem = section.opcionaloptions[section.selectedItem];
             oldItem.checked = false;
             billService.delateAditional(oldItem);
             section.selectedItem = -1;
         } 
         else{
             if (elemento.checked && section.selectedItem != -1) {
-                var oldItem = section.elementos[section.selectedItem];
+                var oldItem = section.opcionaloptions[section.selectedItem];
                 oldItem.checked = false;
                 billService.delateAditional(oldItem);
             };

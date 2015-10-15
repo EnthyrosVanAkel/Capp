@@ -1,267 +1,230 @@
 {
-	"modelo":"A",
-	"acceso":"$2y$10$cZp15FfEg3rqqgOnReneNeMtDdPn6fs1ChhOQ2b4GG4xc5LS1db\/e",
-	"Predeterminados":[
-		{
-			"name":"Felicity O'Conner",
-			"description":"Architecto voluptas dolores impedit amet nihil beatae sed nihil. Aliquam voluptatem eveniet et nisi. Nemo nemo ipsum sit sint omnis quae. Illum aut asperiores velit quidem dignissimos molestias.",
-			"price":1000.00,
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-			"proveedor":"JYOA8CXkkz"
-		},
-		{
-			"name":"Elian Franecki",
-			"description":"Dolorem dolor fugiat neque molestias. Qui esse consequatur eos qui quod provident. Repellat consequatur qui porro aut suscipit.",
-			"price":1000.00,
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-			"proveedor":"kEr0ZCzHdT"
-		},
-		{
-			"name":"Mercedes Thompson",
-			"description":"Occaecati rerum ut quia consequatur consequatur. Dolores veniam hic deserunt ut. Magnam doloremque et voluptatibus perspiciatis facere. Quae voluptatum et aut voluptate quisquam assumenda.",
-			"price":1000.00,
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-			"proveedor":"ctWhcNqOVJ"
-		},
-		{
-			"id": 13,
-			"name": "Piso 1",
-			"price": 300.00,
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		    "img": "http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-		    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
-		},
+	"modelo": "Dedric Harris",
+	"acceso": "$2y$10$QIi6T.4KArBU3Zlf9UlkNO/BCwnEI0JzrzI8LcU8DJQ80vCbsa5k2",
+	"predeterminado": [
 		{	
-			"id": 232,
-			"name": "Piso 2",
-			"price": 400.00,
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		    "img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
-		   	"pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
-		},
-		{	
-			"id": 3233,
-			"name": "Piso 3",
-			"price": 500.00,
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
-		    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
-		},
-		{	
-			"id": 32332,
-			"name": "Piso 3",
-			"price": 500.00,
-			"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-		    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg",
-		    "pdf": "http://www.nissan.com.mx/content/march/catalogo.pdf"
+			"id": 2322,
+			"nombre": "Prof. Dominique Murray II",
+			"descripcion": "Quis dolores temporibus aut est quia quod corporis. Et facilis repudiandae maiores enim sed consequatur doloremque facere. Unde autem eaque dolorum expedita sint.",
+			"precio": 1000,
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+			"proveedor": "FuNi8cRiYU"
 		},
 		{
-			"name":"Otis Pacocha",
-			"description":"Possimus quia nobis et ipsam dolore. Repellendus et necessitatibus est possimus id corrupti cupiditate cumque. Deleniti consequatur non hic consequatur ad.",
-			"price":1000.00,
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-			"proveedor":"djB0tkZ8XO"
+			"id": 242332,
+			"nombre": "Reva Spencer",
+			"descripcion": "Nihil et nobis exercitationem delectus nostrum. Omnis debitis et quis ratione. Ad repellat reprehenderit expedita.",
+			"precio": 1000,
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+			"proveedor": "4ygDCXaELk"
+		},
+		{
+			"id": 23231452,
+			"nombre": "Cara Klein",
+			"descripcion": "Doloremque ipsa ex autem possimus deserunt voluptatem qui sint. Quaerat eum officia ut rerum veniam odit delectus cumque. Dolores qui ullam ut id.",
+			"precio": 1000,
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+			"proveedor": "9zZwwFrTb4"
+		},
+		{
+			"id": 276932,
+			"nombre": "Stanford Braun",
+			"descripcion": "Maiores nemo qui excepturi. Pariatur eum est nam corporis sint velit. Sit et modi accusamus earum nulla molestiae.",
+			"precio": 1000,
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+			"proveedor": "fT3xDOznCS"
 		}
 	],
-	"elejir":[
+	"escoger": [
 		{
-			"seccionName":"Baños",
-			"elementos":[
-				{	
-					"id": 18526,
-					"name":"Roy Jaskolski",
-					"description":"Laboriosam harum et natus voluptate. Mollitia laborum voluptates doloribus consequuntur facere incidunt minima numquam. Quam ut quisquam dolor et.",
-					"price":1000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"hT6wNYhqAK"
+			"seccion": "Richie Green PhD",
+			"escogeroptions": [
+				{
+					"id": 239122,
+					"nombre": "Reyna Wintheiser",
+					"descripcion": "Laboriosam et quisquam labore. Aut ut rerum suscipit quis atque. Rerum accusamus consequuntur dolorem quisquam amet.",
+					"precio": 1000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "w4x0QC0T9n"
 				},
 				{
-					"id": 14856,
-					"name":"Dr. Cortney Gleason",
-					"description":"Fugit consequuntur et quo quam fugit quos. Molestiae debitis error enim est dicta. Minus accusamus voluptas architecto modi facere. Magni tempora nesciunt suscipit rem quod pariatur laudantium.",
-					"price":1500.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"MDeBOcbH9h"
+					"id": 23872,
+					"nombre": "Alvis Jast",
+					"descripcion": "Voluptates reiciendis consequatur velit sint. Itaque in ipsum nobis. Quam aut error est assumenda. Sint quis rerum a commodi. Numquam incidunt odio numquam ex totam dolore enim.",
+					"precio": 1400,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "e6woXjQc1F"
 				},
 				{
-					"id": 18456,
-					"name":"Efren Walter",
-					"description":"Aliquam ut ut voluptas id et officia et cupiditate. Quisquam corrupti velit accusamus quis aliquam. Et voluptatem architecto error est aut et.",
-					"price":2000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"12H6cexM0F"
+					"id": 234722,
+					"nombre": "Ariel Sauer V",
+					"descripcion": "Id magnam reiciendis alias. Soluta cupiditate hic ut. Commodi voluptas cum qui reiciendis aut.",
+					"precio": 1500,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "BNOcqYj6a0"
 				}
 			]
 		},
 		{
-			"seccionName":"Pisos",
-			"elementos":[
-				{
-					"id": 1856,
-					"name": "Adicional 10",
-					"price": 3000.00,
-					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-				    "img": "http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
-				},
-				{	
-					"id": 23245,
-					"name": "Adicional 11",
-					"price": 4000.00,
-					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-				    "img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg"
-				},
-				{	
-					"id": 30987,
-					"name": "Adicional 12",
-					"price": 5000.00,
-					"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-				    "img": "http://www.celima-trebol.com/celima/files/4b6e9e093f.jpg"
-				}
-			]
+		"seccion": "Leola Kirlin",
+		"escogeroptions": [
+					{
+						"id": 1234232,
+						"nombre": "Mavis Stark",
+						"descripcion": "Itaque dignissimos totam odio fuga. Voluptates omnis deleniti aut explicabo autem adipisci. Culpa sed odit aut corrupti commodi ut. Est eum optio commodi cum voluptas sit ut voluptatem.",
+						"precio": 1000,
+						"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+						"proveedor": "JN1wXbhrtb"
+					},
+					{
+						"id": 1245232,
+						"nombre": "Dr. Abe Rice Sr.",
+						"descripcion": "Sit laudantium non impedit quo aut id qui. Quia corporis ea id. Vero asperiores a dolores veniam omnis eius. Sequi esse et tenetur quam.",
+						"precio": 2000,
+						"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+						"proveedor": "mjwbMzEUnt"
+					},
+					{
+						"id": 678232,
+						"nombre": "Allene Zulauf",
+						"descripcion": "Esse rem fugiat nobis pariatur eius. Natus dolorem molestias consectetur ullam.",
+						"precio": 3000,
+						"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+						"proveedor": "cIqLEELyxo"
+					}
+				]
 		},
 		{
-			"seccionName":"Baños",
-			"elementos":[
+			"seccion": "Kasandra Koss",
+			"escogeroptions": [
 				{
-					"id": 18563,
-					"name":"Christine Gutmann",
-					"description":"Ex laudantium tempora non aut. Reiciendis autem officia animi deleniti iure necessitatibus. Libero doloremque magni qui.",
-					"price":1000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"xluin74fyu"
+					"id": 2435632,
+					"nombre": "Dr. Braxton Stark II",
+					"descripcion": "Qui enim molestias sint qui temporibus ea. Nisi hic rerum molestias sed. Dolorum atque quod ut autem at. Quia consequatur tempora sapiente. Et suscipit veniam est accusamus.",
+					"precio": 1000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "LXcxVkvrOx"
 				},
 				{
-					"name":"Rosie Prohaska",
-					"description":"Delectus odio facilis ea inventore est. Quasi doloribus quis magnam beatae.",
-					"price":-1,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"s2zFUfVKGy"
+					"id": 23634532,
+					"nombre": "Vivien Terry",
+					"descripcion": "Fuga porro beatae sunt inventore cupiditate vel nostrum. Accusantium fuga laboriosam est nemo quia. Excepturi nemo tenetur rem non in. Quia sint sequi possimus rerum fugit.",
+					"precio": 2000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "17MeQUnG44"
 				},
 				{
-					"name":"Mya Swaniawski",
-					"description":"Sapiente sequi dolor ex quis rerum est facere. Harum neque libero rerum mollitia id. Molestiae hic ipsam rem asperiores pariatur. At tempore aut eos dolorem libero incidunt corrupti.",
-					"price":-1,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"2U5QsVptWs"
+					"id": 2435732,
+					"nombre": "Mr. Oswald Trantow III",
+					"descripcion": "Ut maiores nesciunt quia exercitationem sunt quisquam. Tempore non inventore non laudantium atque. Vel deleniti provident voluptas omnis cupiditate.",
+					"precio": 3000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "rJ4SzlHqm4"
 				}
 			]
 		}
 	],
-	"opcional":[
+	"opcional": [
 		{
-			"seccionName":"Troy Farrell",
-			"elementos":[
+			"seccion": "Mr. Ramon Farrell",
+			"opcionaloptions": [
 				{
-					"id": 1852134,
-					"name":"Hermina Leuschke",
-					"description":"Sequi architecto commodi natus iste. Aliquid ut sequi non sint.",
-					"price":1000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"prByUueTqz"
-				},
-				{
-					"id": 185623,
-					"name":"Prof. Aida O'Hara IV",
-					"description":"Tempora sequi magnam rerum impedit temporibus neque. Et qui tempora vero quia ex et. Nihil ut laboriosam fugit non eius.",
-					"price":1500.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"dTulEvsJp6"
-				},
-				{
-					"id": 14452,
-					"name":"Dr. Cleve Dicki",
-					"description":"Rem tempora facere ipsum consequuntur nulla. Officia fugiat minus asperiores ratione. Illum sed tempora dolorem.",
-					"price":1800.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"ZXnRUPww5r"
+					"id": 234572232,
+					"nombre": "Ms. Brianne Cormier DVM",
+					"descripcion": "Aspernatur occaecati error fuga tempora. Illo pariatur ipsam et quam et aut. Pariatur quis error tempore vel.",
+					"precio": 1000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "39LNU0B6qe"
 				}
 			]
 		},
 		{
-			"seccionName":"Elta Hamill",
-			"elementos":[
+			"seccion": "Icie Armstrong",
+			"opcionaloptions": [
 				{
-					"id": 5543,
-					"name":"Olga Altenwerth",
-					"description":"Dicta qui nesciunt et veniam quo in. Quis eos quidem at eos quaerat. Ea veritatis sunt libero id. Enim qui inventore ab iure minima repellendus.",
-					"price":1000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"FRXh42xLuB"
+					"id": 23092,
+					"nombre": "Jamel Ondricka",
+					"descripcion": "Voluptatem consequatur sed et recusandae qui enim. Sit est rerum sunt minus occaecati iste. Et sunt sit soluta dolor provident.",
+					"precio": 1000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "Omo6nGdPvA"
+				},
+				{
+					"id": 23122,
+					"nombre": "Breanna Kuhic",
+					"descripcion": "Non esse consequuntur qui nostrum. Rerum voluptas esse error sed qui soluta. Vitae quasi voluptatem maiores ipsum laudantium distinctio. Consectetur autem eaque eum iusto corrupti eos dolorem.",
+					"precio": 3000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "MiqAgVdFhA"
+				},
+				{
+					"id": 1250232,
+					"nombre": "Dr. Noble Kemmer",
+					"descripcion": "Architecto non officiis est nam. Rem iste rerum beatae commodi illum. Veniam et eum dolor reprehenderit laborum natus distinctio.",
+					"precio": 4000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "8jkySXKSUB"
 				}
 			]
 		},
-		{	
-			"seccionName":"Dixie Lynch",
-			"elementos":[
+		{
+			"seccion": "Prof. Alberto Mueller MD",
+			"opcionaloptions": [
 				{
-					"id": 13456,
-					"name":"Valerie Schmeler",
-					"description":"Omnis hic ut dolorem eaque ut ipsum eos. Quod autem blanditiis ut sed sit laudantium illo. Sed enim tempore quia molestiae ratione est earum.",
-					"price":1000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"4qWUqRcnAz"
+					"id": 9865232,
+					"nombre": "Melody Brakus",
+					"descripcion": "Vel maiores sit saepe enim omnis. Dolorem dolorem molestiae et nihil aut explicabo. Nobis ut et ut quod laborum cupiditate modi labore.",
+					"precio": 1000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "g4RkamOLts"
 				},
 				{
-					"id": 18334,
-					"name":"Ryann Cartwright",
-					"description":"Odit fuga iusto maiores numquam et. Assumenda consequatur et voluptas rerum non autem quia dolorum. Enim eveniet quibusdam explicabo rem quam praesentium in.",
-					"price":1100.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"JyhKZ6q8c0"
-				},
-				{
-					"id": 18563465,
-					"name":"Aryanna Hintz IV",
-					"description":"Ipsam quis maxime aut et corporis. Quasi sunt animi temporibus quidem qui. Voluptatem rerum quae iure dolore atque et. Minus nemo nisi et dicta reprehenderit enim doloribus.",
-					"price":5000.00,
-					"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg",
-					"proveedor":"GDwQeQLxkH"
+					"id": 2968732,
+					"nombre": "Billie Block DVM",
+					"descripcion": "Non veniam quia exercitationem ipsa distinctio. Sed ex adipisci temporibus. Incidunt veniam molestiae dolorum. Eos dolorem deleniti ea soluta ut enim. Rerum eveniet quo atque iusto consequatur.",
+					"precio": 5000,
+					"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg",
+					"proveedor": "bUun6t1sce"
 				}
 			]
 		}
 	],
-	"arquitecto":[
+	"arquitecto": [
 		{
-			"id": 123424214,
-			"name":"Angel Rohan",
-			"description":"Omnis dolores quos nihil nemo et omnis. Dolores esse qui consequatur tenetur ducimus molestiae. Dolorum labore et incidunt consectetur est et possimus.",
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
+			"id": 67986232,
+			"nombre": "Mrs. Maude Littel V",
+			"descripcion": "Cumque reprehenderit facere facere possimus ipsam qui. Rem ipsum aut repudiandae quas voluptas harum excepturi. Et laborum aut delectus.",
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg"
 		},
 		{
-			"id": 124,
-			"name":"Mrs. Santina Rath",
-			"description":"Vel dolore ratione fugiat quia qui id ut. Rerum natus omnis neque alias. Et et quia non dolore dolorum. Sed excepturi et sit consectetur.",
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
+			"id": 2378342,
+			"nombre": "Annalise Muller",
+			"descripcion": "Exercitationem consequuntur reiciendis distinctio error. Fugiat laboriosam aut eum corrupti. Perspiciatis quia qui laudantium. Qui consequatur quis fugiat illum.",
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg"
 		},
 		{
-			"id": 14,
-			"name":"Abelardo Hyatt",
-			"description":"Totam iusto aspernatur at quo non. Reiciendis qui et eum consectetur exercitationem saepe eos. Et sit officiis iste nesciunt ipsum exercitationem.",
-			"img":"http://www.valesdedescuentos.com.ar/flotantespisos/kaltotransitola/ventag.jpg"
+			"id": 345232,
+			"nombre": "Mrs. Aurelia Kulas III",
+			"descripcion": "Aut nisi non qui. Incidunt non aut quaerat inventore hic aspernatur.",
+			"url_img": "http://www.celima-trebol.com/celima/files/d2477da19a.jpg"
 		}
 	],
-	"tax":[
+	"tax": [
 		{	
-			"name": "IVA",
-			"tax": 16
+			"concepto": "IVA",
+			"monto": 16
 		},
 		{
-			"name": "Vidalta",
-			"tax": 0.08
+			"concepto": "Vidalta",
+			"monto": 0.08
 		},
 		{
-			"name": "Arquitecto",
-			"tax": 0.8
+			"concepto": "Arquitecto",
+			"monto": 0.8
 		},
 		{
-			"name": "Supervision",
-			"tax": 10
+			"concepto": "Supervision",
+			"monto": 10
 		}
 	]
 }
-
-
-
-
-
-

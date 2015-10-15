@@ -1,4 +1,3 @@
-
 <ul class="nav nav-pills" >
   <li class="tab-size" style="width:<%getTabSize()%>%;"  ng-repeat="section in sectionsData" ng-class="{active:sectionActive($index)}">
     <a href="#/" data-toggle="tab">
@@ -7,14 +6,13 @@
   </li>
 </ul>  
 
-
  
 <!-- Panel Selectio-->
 <div class="panel panel-default" ng-repeat="section in sectionsData" ng-show="sectionActive($index)">
   <div class="panel-body">
 
     <!-- Ficha -->
-    <div class="thumbnail col-sm-4" ng-repeat="item in section.elementos">
+    <div class="thumbnail col-sm-4" ng-repeat="item in section.opcionaloptions">
       <img ng-src="<%item.url_img%>" width="150px" >
       <div class="caption">
         <h4>
