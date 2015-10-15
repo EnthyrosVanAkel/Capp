@@ -277,7 +277,7 @@ app.factory('secciontFactory',function($http){
     function getData(callback){
           $http({
             method: 'GET',
-            url: 'json/demo.json',
+            url: 'http://localhost:8000/api/v0/1',
             cache: true
           }).success(callback);
     }

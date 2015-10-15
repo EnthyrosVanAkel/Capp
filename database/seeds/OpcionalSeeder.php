@@ -13,6 +13,6 @@ class OpcionalSeeder extends Seeder
     {
     	 //
         //factory(App\Opcional::class,3)->create();
-        factory(App\OpcionalOptions::class,3)->create();
+        factory(App\OpcionalOptions::class,2)->create();
     }
 }

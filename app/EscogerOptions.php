@@ -8,5 +8,5 @@ class EscogerOptions extends Model
 {
     //
     protected $table = 'escoger_options';
-    protected $hidden = ['id','created_at','updated_at'];
+    protected $hidden = ['escoger_id','created_at','updated_at'];
 }

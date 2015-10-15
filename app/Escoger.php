@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Escoger extends Model
 {
     //
-    protected $hidden = ['id','created_at','updated_at'];
+    protected $hidden = ['catalogo_id','created_at','updated_at'];
 
 
     public function escogerOptions()

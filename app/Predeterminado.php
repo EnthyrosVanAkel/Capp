@@ -8,5 +8,5 @@ class Predeterminado extends Model
 {
     //
     protected $table = 'predeterminados';
-    protected $hidden = ['id','created_at','updated_at'];
+    protected $hidden = ['catalogo_id','created_at','updated_at'];
 }
