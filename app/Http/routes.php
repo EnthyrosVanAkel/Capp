@@ -10,7 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//Catalogo
+Route::resource('admin/catalogo','CatalogoController');
+/*
 //Catalogo
 Route::get('api/catalogo','CatalogoController@index');
 Route::get('api/catalogo/{id}','CatalogoController@show');
@@ -35,7 +37,7 @@ Route::get('api/arquitecto/{id}','ArquitectoController@show');
 //Tax
 Route::get('api/tax','TaxController@index');
 Route::get('api/tax/{id}','TaxController@show');
-
+*/
 //URL DEL API
 Route::get('api/v0/{id}','ApiController@acceso');
 //ULR del APP

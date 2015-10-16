@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Catalogo extends Model
 {
     //
+    protected $fillable = ['modelo','acceso'];
     protected $hidden = ['id','created_at','updated_at'];
 
 //Catalogos tiene ESCOGER,OPCIONAL,TAXES Y ARQUITECTOS
