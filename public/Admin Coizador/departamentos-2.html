@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -29,7 +25,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index3.html" class="logo">
+        <a href="cotizaciones.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini">
             <img src="img/vidalta.png" width="10px">
@@ -58,22 +54,22 @@
           <ul class="sidebar-menu">
 
             <li>
-              <a href="index3.html">
+              <a href="cotizaciones.html">
                 <i class="fa fa-file"></i> <span>Cotizaciones</span>
               </a>
             </li>
             <li>
-              <a href="index4.html">
+              <a href="departamentos.html">
                 <i class="fa fa-building"></i> <span>Departamentos</span>
               </a>
             </li>
             <li>
-              <a href="pages/widgets.html">
+              <a href="arquitectos.html">
                 <i class="fa fa-users"></i> <span>Arquitectos</span>
               </a>
             </li>
             <li>
-              <a href="index4.html">
+              <a href="comiciones.html">
                 <i class="fa fa-tags"></i> <span>Impuestos y Comiciones</span>
               </a>
             </li>
@@ -105,7 +101,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Lista de Predeterminados</h3>
                   <div class="box-tools">
-                    <button class="btn btn-sm" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='departamentos-2-1.html';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -146,7 +142,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Lista de Acabados</h3>
                    <div class="box-tools">
-                    <button class="btn btn-sm" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='departamentos-2-2.html';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -166,10 +162,12 @@
 
                       <tr>
                         <td>1</td>
-                        <td>Pisos</td>
-                        <td>Piso A</td>
-                        <td>Piso B</td>
-                        <td>Piso C</td>
+                        <td>
+                          <button class="btn btn-sm" onclick="location.href='departamentos-2-3.html';" > Pisos de Madera </button>
+                        </td>
+                        <td>Opcion A</td>
+                        <td>Opcion B</td>
+                        <td>Opcion C</td>
                         <td>
                           <button class="btn btn-sm" ><i class="fa fa-times"></i></button>
                           <button class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>
@@ -189,7 +187,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Lista de Opcioneales</h3>
                    <div class="box-tools">
-                    <button class="btn btn-sm" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='departamentos-2-2.html';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -209,7 +207,9 @@
 
                       <tr>
                         <td>1</td>
-                        <td>Pisos</td>
+                        <td>
+                          <button class="btn btn-sm" onclick="location.href='departamentos-2-3.html';" > Pisos de Madera </button>
+                        </td>
                         <td>Piso A</td>
                         <td>Piso B</td>
                         <td>Piso C</td>
@@ -235,32 +235,8 @@
 
     <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
   </body>
 
 </html>
