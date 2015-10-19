@@ -16,25 +16,44 @@ class CatalogoController extends Controller
     {
         //return Catalogo::with('predeterminado','escoger','escogeroptions','opcional','arquitecto','tax')->get();
         $catalogos = Catalogo::all();
-        return view('Catalogo/index',compact('catalogos')); 
+        return view('Admin/catalogo/index',compact('catalogos')); 
     }
  
     public function show($id)
     {
         //return Catalogo::with('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax')->findOrFail($id);
         $catalogo = Catalogo::find($id);
-        return view('Catalogo/show',compact('catalogo'));
+        return view('Admin/catalogo/show',compact('catalogo'));
     }
 
 
 
     public function create(){
-      return view('Catalogo/create');
+      return view('Admin/catalogo/create');
     }
 
     public function store(CreateCatalogoRequest $request)
     {
       Catalogo::create($request->all());
+      return redirect('admin/catalogo');
+    }
+
+
+    public function edit($id){
+      $catalogo = Catalogo::find($id);
+      return view('Admin/catalogo/edit',compact('catalogo'));
+    }
+
+
+    public function update($id,CreateCatalogoRequest $request){
+      $catalogo = Catalogo::find($id);
+      $catalogo->update($request->all());
+      return redirect('admin/catalogo');
+    }
+
+    public function destroy($id){
+      $catalogo = Catalogo::find($id);
+      $catalogo->delete();
       return redirect('admin/catalogo');
     }
 }
