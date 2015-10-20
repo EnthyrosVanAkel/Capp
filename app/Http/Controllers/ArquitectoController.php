@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Http\Requests\CreateArquitectoRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -11,11 +13,48 @@ class ArquitectoController extends Controller
 {
        public function index()
     {
-        return Arquitecto::all();
+    	$arquitectos = Arquitecto::all();
+    	return view('Admin/arquitecto/index',compact('arquitectos'));   	
     }
  
     public function show($id)
     {
-        return Arquitecto::find($id);
+    	$arquitecto = Arquitecto::find($id);
+    	return view('Admin/arquitecto/show',compact('arquitecto'));
     }
+
+
+    public function create()
+    {
+    	return view('Admin/arquitecto/create');
+    }
+
+    public function store(CreateArquitectoRequest $request)
+    {
+    	Arquitecto::create($request->all());
+    	return redirect('admin/arquitecto');
+    }
+
+    public function edit($id)
+    {
+    	$arquitecto = Arquitecto::find($id);
+    	return view('Admin/arquitecto/edit',compact('$arquitecto'));
+    }
+
+    public function update($id, CreateArquitectoRequest $request)
+    {
+    	$arquitecto = Arquitecto::find($id);
+    	$arquitecto->update($request->all());
+    	return redirect('admin/arquitecto');
+    }
+
+    public function destroy($id){
+    	$arquitecto = Arquitecto::find($id);
+    	$arquitecto->delete();
+    	return redirect('admin/arquitecto');
+    }
+
+
 }
+
+

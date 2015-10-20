@@ -8,11 +8,11 @@
 {!! Form::model($catalogo,['method' => 'PATCH','action'=>['CatalogoController@update',$catalogo->id]]) !!}
   <div class="form-group">
   {!! Form::label('modelo','Nombre: ') !!}
-  {!! Form::text('modelo',null,['class'=>'form-control']) !!}
+  {!! Form::text('modelo',null,['class'=>'form-control','placeholder'=>'Modelo']) !!}
 </div>
 <div class="form-group">
 {!! Form::label('acceso','Descripciòn: ') !!}
-{!! Form::text('acceso',null,['class'=>'form-control']) !!}
+{!! Form::text('acceso',null,['class'=>'form-control','placeholder'=>'Password']) !!}
 </div>
 <div class="form-group">
 {!! Form::submit('Agregar Articulo:',['class'=>'btn btn-primary form-control']) !!}

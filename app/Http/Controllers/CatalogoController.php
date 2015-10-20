@@ -21,8 +21,8 @@ class CatalogoController extends Controller
  
     public function show($id)
     {
-        //return Catalogo::with('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax')->findOrFail($id);
-        $catalogo = Catalogo::find($id);
+        $catalogo = Catalogo::with('predeterminado','escoger','escoger.escogeroptions','opcional','opcional.opcionaloptions','arquitecto','tax')->findOrFail($id);
+        //$catalogo = Catalogo::find($id);
         return view('Admin/catalogo/show',compact('catalogo'));
     }
 
