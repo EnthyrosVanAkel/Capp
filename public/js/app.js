@@ -1,14 +1,7 @@
 var app = angular.module('app', ['ngRoute']);
 
-var apartments = [
-    { 
-        tipe: "Torre LUX",
-        numbers: ["A","B","B2","C","D","F","G"] 
-    },
-    { 
-        tipe: "Torre Miralta",
-        numbers: ["A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse"] 
-    }
+var modelos = [
+    "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
 ];
 
 
@@ -180,8 +173,6 @@ app.service('billService', function(secciontFactory) {
         var index = this.billArray .indexOf(elemento);
         if (index != null) {
             this.billArray.splice(index, 1);
-        }else{
-            console.log('no existe');
         };
     };
 
@@ -193,8 +184,6 @@ app.service('billService', function(secciontFactory) {
         var index = this.aditionalArray.indexOf(elemento);
         if (index != null) {
             this.aditionalArray.splice(index, 1);
-        }else{
-            console.log('no existe');
         };
     };
 
@@ -206,8 +195,6 @@ app.service('billService', function(secciontFactory) {
         var index = this.arqSelect.indexOf(elemento);
         if (index != null) {
             this.arqSelect.splice(index, 1);
-        }else{
-            console.log('arq no existe');
         };
     };
 
@@ -256,73 +243,66 @@ secciontFactory
 **********************************************************************************************************/
 
 app.factory('secciontFactory',function($http){
-    // return {
-    //   getS1: function(callback){
-    //     $http.get('json/base.json').success(callback);
-    //   },
-    //   getS2: function(callback){
-    //     $http.get('json/elejir.json').success(callback);
-    //   },
-    //   getS3: function(callback){
-    //     $http.get('json/ad.json').success(callback);
-    //   },
-    //   getS4: function(callback){
-    //     $http.get('json/arq.json').success(callback);
-    //   },
-    //   getS5: function(callback){
-    //     $http.get('json/tax.json').success(callback);
-    //   }
-    // };
+    var get_JSON = {};
+
+    var postSubmit = function post_submit(post_data,callback){
+        $http({
+            url: "json/access.json",
+                method: "POST",
+                data:post_data
+            }).success(callback);
+    };
 
     function getData(callback){
           $http({
             method: 'GET',
-            url: 'http://localhost:8000/api/v0/1',
+            url: get_JSON.url,
             cache: true
           }).success(callback);
     }
 
     return {
-      list: getData,
-
-      find: function(name, callback){
-        getData(function(data) {
-          var country = data.filter(function(entry){
-            return entry.name === name;
-          })[0];
-          callback(country);
-        });
-      },
-      getS1: function(callback){
-        getData(function(data) {
-          var baseData = data.predeterminado;
-          callback( baseData );
-        });
-      },
-      getS2: function(callback){
-        getData(function(data) {
-          var baseData = data.escoger;
-          callback( baseData );
-        });
-      },
-      getS3: function(callback){
-         getData(function(data) {
-          var baseData = data.opcional;
-          callback( baseData );
-        });
-      },
-      getS4: function(callback){
-         getData(function(data) {
-          var baseData = data.arquitecto;
-          callback( baseData );
-        });
-      },
-      getS5: function(callback){
-         getData(function(data) {
-          var baseData = data.tax;
-          callback( baseData );
-        });
-      }
+        getStatus:function(){
+            var result = getAccess();
+            return result;
+        },
+        getModels: function(post_data,callback){
+            postSubmit(post_data,function(data) {
+                var baseData = data;
+                get_JSON = data;
+                callback( baseData );
+             });
+        },
+        getS1: function(callback){
+            getData(function(data) {
+              var baseData = data.predeterminado;
+              callback( baseData );
+            });
+        },
+        getS2: function(callback){
+            getData(function(data) {
+              var baseData = data.escoger;
+              callback( baseData );
+            });
+        },
+        getS3: function(callback){
+            getData(function(data) {
+              var baseData = data.opcional;
+              callback( baseData );
+            });
+        },
+        getS4: function(callback){
+            getData(function(data) {
+              var baseData = data.arquitecto;
+              callback( baseData );
+            });
+        },
+        getS5: function(callback){
+            getData(function(data) {
+              var baseData = data.tax;
+              callback( baseData );
+            });
+        }
     };
 });
 
@@ -331,7 +311,7 @@ app.factory('secciontFactory',function($http){
 General Controller
 **********************************************************************************************************/
 
-app.controller('generalCtrl', function($scope, navService) {
+app.controller('generalCtrl', function($scope, navService,secciontFactory) {
 
     $scope.title = "VIDALTA";
     navService.navArray = navArray; 
@@ -410,10 +390,9 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
  logInCtrl
 **********************************************************************************************************/
 
-app.controller('logInCtrl', function($scope, navService) {
+app.controller('logInCtrl', function($scope, navService, secciontFactory) {
     $scope.user = {};
-    $scope.apartments = apartments;
-    this.selectedData = {};
+    $scope.models = modelos;
     
     $scope.getApartmentTipe = function(array){ 
         this.user.apartmentTipe = array.tipe;
@@ -425,16 +404,23 @@ app.controller('logInCtrl', function($scope, navService) {
         
     }
     
-    $scope.submit = function(data){ 
-        if(data){
-            $scope.user.depto= this.userDepto;
-            $scope.user.email= this.userEmail;
-            $scope.user.password= this.userPassword;
-            alert("OK");
-            navService.next();
-            
+    $scope.submit = function(valid){ 
+        if(valid){
+            $scope.user.modelo = this.userDepto;
+            //$scope.user.email= this.userEmail;
+            $scope.user.aceso= this.userPassword;
+
+            secciontFactory.getModels($scope.user,function(data) {
+                var data_post = data;
+                if (data_post.url){
+                    navService.next();
+                }else{
+                    alert(data_post.error);
+                }
+            });
+
         } else{
-            alert("Error Campo no valido");
+            alert("Error campo no valido");
         }
     }
  
@@ -577,7 +563,7 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
             billService.calcBill();
             billService.adicionalesArray.active = true;
 
-            console.log($scope.sectionsData);
+           
 
         };
 
