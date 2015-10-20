@@ -12,6 +12,10 @@
 */
 //Catalogo
 Route::resource('admin/catalogo','CatalogoController');
+//Arquitecto
+Route::resource('admin/arquitecto','ArquitectoController');
+//Tax
+Route::resource('admin/tax','TaxController');
 /*
 //Catalogo
 Route::get('api/catalogo','CatalogoController@index');

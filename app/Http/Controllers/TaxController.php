@@ -41,7 +41,7 @@ class TaxController extends Controller
 
 
     public function update($id,CreateTaxRequest $request){
-      $tax =Taxo::find($id);
+      $tax =Tax::find($id);
       $tax->update($request->all());
       return redirect('admin/tax');
     }
