@@ -2,34 +2,72 @@
 @extends ('admin')
 
 
-@section ('Arquitecto')
+@section ('arquitecto')
 
-<h1> Crear Arquitecto </h1>
-{!! Form::open(['url' => 'admin/arquitecto']) !!}
-  <div class="form-group">
-  {!! Form::label('nombre','Nombre: ') !!}
-  {!! Form::text('nombre',null,['class'=>'form-control']) !!}
-</div>
-<div class="form-group">
-{!! Form::label('descripcion','Descripcion: ') !!}
-{!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
-</div>
-  <div class="form-group">
-  {!! Form::label('url_img','Imagen: ') !!}
-  {!! Form::text('url_img',null,['class'=>'form-control']) !!}
-</div>
-<div class="form-group">
-{!! Form::submit('Crear Arquitecto:',['class'=>'btn btn-primary form-control']) !!}
-</div>
-{!! Form::close() !!}
+        <!-- Nombre de la Seccion -->
+        <section class="content-header">
+          <h1>
+            Catalogo departamento <b>A</b>
+          </h1>
+        </section> <!-- END Nombre de la Seccion -->
+        
+        <!-- Contenido a Modificar -->
+        <section class="content">
+
+          <div class="row">
+
+
+            <!-- Formulario Nuevo de Partamento -->
+            <div class="col-md-12">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Nuevo Predeterminado</h3>
+                </div><!-- /.box-header -->
+
+                <!-- Form -->
+                {!! Form::open(['url' => 'admin/arquitecto']) !!}
+                  <div class="box-body">
+
+                    <div class="form-group col-xs-12">
+
+
+                      <div class="col-xs-8 col-xs-offset-2">
+                        <h3>Opcion:</h3>
+
+                        {!! Form::label('nombre','Nombre: ') !!}
+                        {!! Form::text('nombre',null,['class'=>'form-control']) !!}
+
+                        {!! Form::label('descripcion','Descripcion: ') !!}
+                        {!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
+
+                        {!! Form::label('url_img','Imagen: ') !!}
+                        {!! Form::text('url_img',null,['class'=>'form-control']) !!}
+
+                      </div>
+
+                    </div>
+
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                   {!! Form::submit('Añadir',['class'=>'btn btn-primary form-control']) !!}
+                  </div>
+                  
+               {!! Form::close() !!}
 
 @if ($errors->any())
-	<ul class="alert alert-damage">
-		@foreach ($errors->all() as $error)
-			<li>{{$error}}</li>
-		@endforeach
-	</u>
+  <ul class="alert alert-damage">
+    @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+  </u>
 @endif
+
+              </div><!-- /.box -->
+            </div> <!-- End Formulario Nuevo de Partamento -->
+          </div><!-- /.row -->
+
+        </section><!-- Contenido a Modificar -->
 
 
 @stop

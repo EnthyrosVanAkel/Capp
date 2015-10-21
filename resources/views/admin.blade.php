@@ -84,7 +84,7 @@
 
       @yield('cotizacion')
       @yield('catalogo')
-      @yield('arquitectos')
+      @yield('arquitecto')
       @yield('tax')
       
 
