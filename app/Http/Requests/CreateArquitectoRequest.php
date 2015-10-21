@@ -28,7 +28,7 @@ class CreateArquitectoRequest extends Request
             //
         'nombre' => 'required',
         'descripcion' => 'required',
-        'url_img' => 'required'
+        'imagen' => 'required'
         ];
     }
 }

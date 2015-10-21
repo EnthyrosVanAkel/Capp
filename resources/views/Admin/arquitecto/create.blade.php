@@ -25,7 +25,7 @@
                 </div><!-- /.box-header -->
 
                 <!-- Form -->
-                {!! Form::open(['url' => 'admin/arquitecto']) !!}
+                {!! Form::open(['route' => 'admin.arquitecto.store', 'method' => 'POST', 'files' => 'true']) !!}
                   <div class="box-body">
 
                     <div class="form-group col-xs-12">
@@ -35,14 +35,13 @@
                         <h3>Opcion:</h3>
 
                         {!! Form::label('nombre','Nombre: ') !!}
-                        {!! Form::text('nombre',null,['class'=>'form-control']) !!}
+                        {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre']) !!}
 
                         {!! Form::label('descripcion','Descripcion: ') !!}
-                        {!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
+                        {!! Form::textarea('descripcion',null,['class'=>'form-control','placeholder'=>'Descripcion....']) !!}
 
                         {!! Form::label('url_img','Imagen: ') !!}
-                        {!! Form::text('url_img',null,['class'=>'form-control']) !!}
-
+                         {!! form::file('imagen',null,['class' => 'form-control']) !!}
                       </div>
 
                     </div>
@@ -50,7 +49,7 @@
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
-                   {!! Form::submit('Añadir',['class'=>'btn btn-primary form-control']) !!}
+                   {!! Form::submit('Añadir',['class'=>'btn btn-primary']) !!}
                   </div>
                   
                {!! Form::close() !!}

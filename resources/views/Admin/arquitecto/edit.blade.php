@@ -1,40 +1,73 @@
+
 @extends ('admin')
 
 
 @section ('arquitecto')
 
-<h1>{{$arquitecto->nombre}}</h1>
+        <!-- Nombre de la Seccion -->
+        <section class="content-header">
+          <h1>
+            Catalogo departamento <b>A</b>
+          </h1>
+        </section> <!-- END Nombre de la Seccion -->
+        
+        <!-- Contenido a Modificar -->
+        <section class="content">
 
-{!! Form::model($arquitecto,['method' => 'PATCH','action'=>['ArquitectoController@update',$arquitecto->id]]) !!}
-  <div class="form-group">
-  {!! Form::label('nombre','Nombre: ') !!}
-  {!! Form::text('nombre',null,['class'=>'form-control']) !!}
-</div>
-<div class="form-group">
-{!! Form::label('descripcion','Descripcion: ') !!}
-{!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
-</div>
-  <div class="form-group">
-  {!! Form::label('url_img','Imagen: ') !!}
-  {!! Form::text('url_img',null,['class'=>'form-control']) !!}
-</div>
-<div class="form-group">
-{!! Form::submit('Modificar Arquitecto:',['class'=>'btn btn-primary form-control']) !!}
-</div>
-{!! Form::close() !!}
+          <div class="row">
 
-{!! Form::open(['method'  => 'DELETE','route' =>['admin.arquitecto.destroy',$arquitecto->id]]) !!}
-<div class="form-group">
-	{!! Form::submit('Eliminar Arquitecto:',['class'=>'btn btn-danger form-control']) !!}
-</div> 
-{!! Form::close() !!}
+
+            <!-- Formulario Nuevo de Partamento -->
+            <div class="col-md-12">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Modificar</h3>
+                </div><!-- /.box-header -->
+
+                <!-- Form -->
+                {!! Form::model($arquitecto,['method' => 'PATCH','action'=>['ArquitectoController@update',$arquitecto->id]]) !!}
+                  <div class="box-body">
+
+                    <div class="form-group col-xs-12">
+
+
+                      <div class="col-xs-8 col-xs-offset-2">
+                        <h3>{{$arquitecto->id}}</h3>
+
+                        {!! Form::label('nombre','Nombre: ') !!}
+                        {!! Form::text('nombre',null,['class'=>'form-control']) !!}
+
+                        {!! Form::label('descripcion','Descripcion: ') !!}
+                        {!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
+
+                        {!! Form::label('url_img','Imagen: ') !!}
+                        {!! Form::text('url_img',null,['class'=>'form-control']) !!}
+
+                      </div>
+
+                    </div>
+
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                   {!! Form::submit('Modificar',['class'=>'btn btn-primary']) !!}
+                  </div>
+                  
+               {!! Form::close() !!}
 
 @if ($errors->any())
-	<ul class="alert alert-damage">
-		@foreach ($errors->all() as $error)
-			<li>{{$error}}</li>
-		@endforeach
-	</u>
+  <ul class="alert alert-damage">
+    @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+  </u>
 @endif
+
+              </div><!-- /.box -->
+            </div> <!-- End Formulario Nuevo de Partamento -->
+          </div><!-- /.row -->
+
+        </section><!-- Contenido a Modificar -->
+
 
 @stop

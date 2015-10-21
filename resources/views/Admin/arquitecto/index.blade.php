@@ -27,9 +27,9 @@
                   <h5>Arquitecto</h5>
                   <div class="box-tools pull-right">
                    {!! Form::open(['method'  => 'DELETE','route' =>['admin.arquitecto.destroy',$arquitecto->id]]) !!}
-                   {!! Form::submit('X',['class'=>'btn btn-sm']) !!}
+                   {!! Form::submit('X',['class'=>'btn btn-box-tool']) !!}
                    {!! Form::close() !!}
-                <button onclick="location.href='/admin/arquitecto/{{$arquitecto->id}}/edit';" class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>   
+                <button onclick="location.href='/admin/arquitecto/{{$arquitecto->id}}/edit';" class="btn btn-box-tool" ><i class="fa fa-pencil-square-o"></i></button>   
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">

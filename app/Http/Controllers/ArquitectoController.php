@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Input;
 use App\Http\Requests\CreateArquitectoRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -31,14 +31,23 @@ class ArquitectoController extends Controller
 
     public function store(CreateArquitectoRequest $request)
     {
-    	Arquitecto::create($request->all());
-    	return redirect('admin/arquitecto');
-    }
+        $arquitecto = new Arquitecto();
+        $file = $request->file('imagen');
+        $nombre = $file->getClientOriginalName();
+        \Storage::disk('local')->put($nombre, \File::get($file));
+
+        $arquitecto->nombre = $request->input('nombre');
+        $arquitecto->descripcion = $request->input('descripcion');
+        $arquitecto->url_img = $nombre; 
+        $arquitecto->save();
+        return redirect('admin/arquitecto');
+   }
+
 
     public function edit($id)
     {
     	$arquitecto = Arquitecto::find($id);
-    	return view('Admin/arquitecto/edit',compact('$arquitecto'));
+    	return view('Admin/arquitecto/edit',compact('arquitecto'));
     }
 
     public function update($id, CreateArquitectoRequest $request)
