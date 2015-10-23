@@ -23,32 +23,32 @@ class TaxController extends Controller
     }
 
 
-    public function create(){
-      return view('Admin/tax/create');
+    public function create($id_catalogo){
+      return view('Admin/tax/create',compact('id_catalogo'));
     }
 
-    public function store(CreateTaxRequest $request)
+    public function store($id_catalogo,CreateTaxRequest $request)
     {
       Tax::create($request->all());
-      return redirect('admin/tax');
+      return redirect('/admin/catalogo/'.$id_catalogo);
     }
 
 
-    public function edit($id){
+    public function edit($id_catalogo,$id){
       $tax = Tax::find($id);
-      return view('Admin/tax/edit',compact('tax'));
+      return view('Admin/tax/edit',compact('id_catalogo','tax'));
     }
 
 
-    public function update($id,CreateTaxRequest $request){
+    public function update($id_catalogo,$id,CreateTaxRequest $request){
       $tax =Tax::find($id);
       $tax->update($request->all());
-      return redirect('admin/tax');
+      return redirect('/admin/catalogo/'.$id_catalogo);
     }
 
-    public function destroy($id){
+    public function destroy($catalogo,$id){
       $tax = Tax::find($id);
       $tax->delete();
-      return redirect('admin/tax');
+      return redirect('/admin/catalogo/'.$catalogo);
     }
 }

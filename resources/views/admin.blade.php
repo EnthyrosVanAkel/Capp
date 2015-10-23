@@ -54,23 +54,13 @@
           <ul class="sidebar-menu">
 
             <li>
-              <a href="cotizaciones.html">
+              <a href="/admin/cotizacion">
                 <i class="fa fa-file"></i> <span>Cotizaciones</span>
               </a>
             </li>
             <li>
-              <a href="departamentos.html">
+              <a href="/admin/catalogo">
                 <i class="fa fa-building"></i> <span>Departamentos</span>
-              </a>
-            </li>
-            <li>
-              <a href="arquitectos.html">
-                <i class="fa fa-users"></i> <span>Arquitectos</span>
-              </a>
-            </li>
-            <li>
-              <a href="comiciones.html">
-                <i class="fa fa-tags"></i> <span>Impuestos y Comiciones</span>
               </a>
             </li>
 
@@ -84,6 +74,7 @@
 
       @yield('cotizacion')
       @yield('catalogo')
+      @yield('predeterminado')
       @yield('arquitecto')
       @yield('tax')
       

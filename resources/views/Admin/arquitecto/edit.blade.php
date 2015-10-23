@@ -25,7 +25,7 @@
                 </div><!-- /.box-header -->
 
                 <!-- Form -->
-                {!! Form::model($arquitecto,['method' => 'PATCH','action'=>['ArquitectoController@update',$arquitecto->id]]) !!}
+                {!! Form::model($arquitecto,['method' => 'PATCH','files' => 'true','action'=>['ArquitectoController@update',$id_catalogo,$arquitecto->id]]) !!}
                   <div class="box-body">
 
                     <div class="form-group col-xs-12">
@@ -41,8 +41,8 @@
                         {!! Form::textarea('descripcion',null,['class'=>'form-control']) !!}
 
                         {!! Form::label('url_img','Imagen: ') !!}
-                        {!! Form::text('url_img',null,['class'=>'form-control']) !!}
-
+                        {!! form::file('imagen',null,['class' => 'form-control']) !!}
+                        <p class="help-block">Archivo no mayor a 2 Mb</p>
                       </div>
 
                     </div>

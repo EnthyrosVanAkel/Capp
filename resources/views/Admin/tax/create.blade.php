@@ -24,7 +24,7 @@
                 </div><!-- /.box-header -->
 
                 <!-- Form -->
-                {!!Form::open(['url' => 'admin/tax']) !!}
+                {!! Form::open(['method'  => 'POST','action' =>['TaxController@store',$id_catalogo]]) !!}
                   <div class="box-body">
                     <div class="form-group col-xs-offset-2 col-xs-8">
                       {!! Form::label('concepto','Concepto: ') !!}
@@ -35,12 +35,14 @@
                       {!! Form::text('monto',null,['class'=>'form-control','placeholder'=>'Porcentaje']) !!}
                       <span class="input-group-addon">%</span>
                       </div>
+                      {!! Form::hidden('catalogo_id',$id_catalogo) !!}
                     </div>
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
                   {!! Form::submit('Añadir',['class'=>'btn btn-primary']) !!}
                   </div>
+
                   {!! Form::close() !!}
 
 @if ($errors->any())

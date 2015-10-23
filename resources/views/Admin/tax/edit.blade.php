@@ -24,7 +24,7 @@
                 </div><!-- /.box-header -->
 
                 <!-- Form -->
-                {!! Form::model($tax,['method' => 'PATCH','action'=>['TaxController@update',$tax->id]]) !!}
+                {!! Form::model($tax,['method' => 'PATCH','action'=>['TaxController@update',$id_catalogo,$tax->id]]) !!}
                   <div class="box-body">
                     <div class="form-group col-xs-offset-2 col-xs-8">
                       {!! Form::label('concepto','Concepto: ') !!}
@@ -34,6 +34,7 @@
                       <div class="input-group">
                       {!! Form::text('monto',null,['class'=>'form-control','placeholder'=>'Porcentaje']) !!}
                       <span class="input-group-addon">%</span>
+                      {!! Form::hidden('catalogo_id',$id_catalogo) !!}
                       </div>
                     </div>
                   </div><!-- /.box-body -->
