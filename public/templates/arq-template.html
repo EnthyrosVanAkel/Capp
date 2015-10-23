@@ -1,18 +1,21 @@
+<div class=" col-sm-10 col-sm-offset-1">
+  <div class="thumbnail-box">
 
-  <div class="thumbnail col-sm-4" ng-repeat="arq in sectionsData">
-      <img ng-src="<%arq.url_img%>" width="150px" >
-      <div class="caption">
-        <h4>
-          <samp><%arq.nombre%></samp>
-        </h4>
-        <p class="text-left">
-          <br/>
-          <%arq.descripcion%>
-        </p>
-         <div class="text-center">
-            <input type="checkbox" id="<%arq.id%>" ng-disabled="<%arq.disabled%>" ng-checked="<%arq.checked%>" ng-model="arq.checked"  ng-click="arqUpdate(arq)"/>
-            <label for="<%arq.id%>"></label>
+    <div class="thumbnail col-xs-4" ng-repeat="arq in sectionsData">
+        <img ng-src="<%arq.url_img%>" width="150px" >
+        <div class="caption">
+          <h4>
+            <samp class="info-text"><%arq.nombre%></samp>
+          </h4>
+          <p class="text-left">
+            <%arq.descripcion%>
+          </p>
+           <div class="text-center">
+              <input type="checkbox" id="<%arq.id%>" ng-disabled="<%arq.disabled%>" ng-checked="<%arq.checked%>" ng-model="arq.checked"  ng-click="arqUpdate(arq)"/>
+              <label for="<%arq.id%>"></label>
+          </div>
         </div>
-      </div>
-    </div> <!-- End Ficha -->
+      </div> <!-- End Ficha -->
+  </div>
+</div>
 

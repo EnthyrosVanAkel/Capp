@@ -1,5 +1,5 @@
 
-<ul class="nav nav-pills" >
+<ul class="nav sub-nav-pills" >
   <li class="tab-size" style="width:<%getTabSize()%>%;"  ng-repeat="section in sectionsData" ng-class="{active:sectionActive($index)}">
     <a href="#/" data-toggle="tab">
       <%section.seccion%>
@@ -10,16 +10,19 @@
 
  
 <!-- Panel Selectio-->
-<div class="panel panel-default" ng-repeat="section in sectionsData" ng-show="sectionActive($index)">
-  <div class="panel-body">
-
+<div class=" col-sm-10 col-sm-offset-1">
+  <div class="thumbnail-box" ng-repeat="section in sectionsData" ng-show="sectionActive($index)">
+  
     <!-- Ficha -->
-    <div class="thumbnail col-sm-4" ng-repeat="item in section.escogeroptions">
-      <img ng-src="<%item.url_img%>" width="150px" >
+    <div class="thumbnail col-xs-4" ng-repeat="item in section.escogeroptions">
+      <img ng-src="<%item.url_img%>" >
       <div class="caption">
         <h4>
-          <samp><%item.nombre%></samp>
-          <small class="text-right"><%item.basePrice |priceFilter %></small>
+          <samp class="info-text"><%item.nombre%></samp>
+          <br/>
+          <small ng-class="{include:item.checked , noneInclude:(!item.checked)}" >
+            <%item.basePrice | priceFilter%>
+          </small>
         </h4>
         <!-- <p class="text-left">
           <br/>
@@ -31,7 +34,8 @@
         </div>
       </div>
     </div> <!-- End Ficha -->
-  </div>
+</div>
+  
 </div>
 
 

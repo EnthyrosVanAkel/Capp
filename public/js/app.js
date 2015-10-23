@@ -57,6 +57,9 @@ app.config(
             controller: 'billCtrl',
             controllerAs: 'billForm'
         }).
+        when('/7', {
+            templateUrl: 'templates/send-template.html'
+        }).
         otherwise({
             redirectTo: '/'
         });
@@ -248,8 +251,9 @@ app.factory('secciontFactory',function($http){
     var postSubmit = function post_submit(post_data,callback){
         $http({
             url: "json/access.json",
-                method: "POST",
-                data:post_data
+                method: "GET"
+                // ,
+                // data:post_data
             }).success(callback);
     };
 
@@ -313,7 +317,7 @@ General Controller
 
 app.controller('generalCtrl', function($scope, navService,secciontFactory) {
 
-    $scope.title = "VIDALTA";
+
     navService.navArray = navArray; 
     $scope.navArray = navService.navArray;
 
