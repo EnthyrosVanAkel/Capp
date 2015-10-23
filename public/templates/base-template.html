@@ -1,0 +1,33 @@
+
+
+<div class="col-sm-10 col-sm-offset-1 wizard-body" >
+
+      <h6 class="info-text">
+      <%baseData.seccion%>
+      </h6>
+
+            <div class="dataBox">
+              <div class="media" ng-repeat="item in baseData.elementos" >
+                <div class="media-left">
+                   <a href="#">
+                    <img class="media-object" ng-src="<%item.url_img%>">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="col-sm-8">
+                      <samp class="info-text">
+                        <%item.nombre%>
+                      </samp>
+                      <small class="text-right" ng-class="{include:item.checked , noneInclude:(!item.checked)}" >
+                            <%item.basePrice | priceFilter%>
+                      </small>
+                  </h4>
+                </div>
+                <div class="media-right">
+                  <input type="checkbox" id="<%item.id%>" ng-disabled="<%item.disabled%>" ng-checked="item.checked" ng-model="item.checked"  ng-click="updateBill(item)"/>
+                      <label for="<%item.id%>"></label>
+                </div>
+              </div>
+            </div>
+        
+</div><!--   END Wizard Content    -->

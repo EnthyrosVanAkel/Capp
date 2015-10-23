@@ -1,0 +1,44 @@
+<!--   Wizard Content   -->
+<div id="LogIn" class="col-sm-8 col-sm-offset-2 text-center wizard-body">
+
+      <form name="LogIn" class="form-signin col-sm-8 col-sm-offset-2"  ng-submit="submit(LogIn.$valid)" novalidate>
+              
+          <select class="form-control" 
+                    title="apartmentNumber"  
+                    ng-model="userApartmenteNumber"
+          
+                    ng-options="numbers for numbers in models"
+                    ng-change="getApartmentNumber(userApartmenteNumber)" required>
+            <option value="">Seleleciona el tipo de apartamento</option>  
+          </select>
+
+          <label  for="inputDepto" 
+                  class="sr-only" 
+                  ng-show="selectedData">
+                  Department Number
+          </label>
+
+          <input name="depto" type="number" id="inputDepto" class="form-control" placeholder="Department Number" ng-model="userDepto"    required >
+          <p ng-show="LogIn.depto.$invalid && !LogIn.depto.$pristine " class="text-danger"> <small>Número de departamento no valido.</small></p>                                    
+
+          <label for="inputEmail" class="sr-only" >Email address</label>
+          <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" ng-model="userEmail" required >
+          <p ng-show="LogIn.email.$invalid && !LogIn.email.$pristine " class="text-danger"> Ingrese un e-mail valido.</p>
+
+
+          <label for="inputPassword" class="sr-only" >Password</label>
+          <input type="Password" id="inputPassword" class="form-control" placeholder="Password" ng-model="userPassword"  required>
+
+          
+          <button class="btn btn-fill btn-warning btn-wd btn-sm btn-form" type="submit" ng-click="user.print" ng-show="LogIn.$valid" >Inicia</button>
+
+          <p ng-show="LogIn.$invalid && !LogIn.$pristine " class="text-info"> Complete para Iniciar.</p>
+
+
+
+      </form>     
+</div><!--   END Wizard Content    -->
+
+
+
+
