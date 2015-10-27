@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute','oitozero.ngSweetAlert']);
 
 var modelos = [
     "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
@@ -10,7 +10,7 @@ var modelos = [
 **********************************************************************************************************/
 
 
-var navArray = ['Inicio de Sesión','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
+var navArray = ['Inicio de Secion','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
 
 
 app.config(
@@ -58,17 +58,24 @@ app.config(
             controllerAs: 'billForm'
         }).
         when('/7', {
-            templateUrl: 'templates/send-template.html'
+            templateUrl: 'templates/send-template.html',
+            controller: 'sendCtrl'
         }).
         otherwise({
-            redirectTo: '/'
+            redirectTo: function (routeParams, path, search) {
+                // console.log(routeParams);
+                // console.log(path);
+                // console.log(search);
+                location.reload();
+                return "/";
+              }
         });
     }
 );
 
 app.run(function(navService) {
     if (navService.count == 0) {
-        location.href = '#/';
+        location.reload();
         navService.count = 0;
     };
 });
@@ -80,6 +87,7 @@ app.run(function(navService) {
 app.service('navService', function() {
 
     this.title = "VIDALTA";
+    this.userEmail= "";
     this.navArray = navArray;
     this.count = 0;
     this.subCount = {};
@@ -266,10 +274,6 @@ app.factory('secciontFactory',function($http){
     }
 
     return {
-        getStatus:function(){
-            var result = getAccess();
-            return result;
-        },
         getModels: function(post_data,callback){
             postSubmit(post_data,function(data) {
                 var baseData = data;
@@ -394,7 +398,7 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
  logInCtrl
 **********************************************************************************************************/
 
-app.controller('logInCtrl', function($scope, navService, secciontFactory) {
+app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAlert) {
     $scope.user = {};
     $scope.models = modelos;
     
@@ -411,7 +415,7 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory) {
     $scope.submit = function(valid){ 
         if(valid){
             $scope.user.modelo = this.userDepto;
-            //$scope.user.email= this.userEmail;
+            navService.userEmail= this.userEmail;
             $scope.user.aceso= this.userPassword;
 
             secciontFactory.getModels($scope.user,function(data) {
@@ -419,12 +423,12 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory) {
                 if (data_post.url){
                     navService.next();
                 }else{
-                    alert(data_post.error);
+                    SweetAlert.swal("Error","Contraseña no valida","error");
                 }
             });
 
         } else{
-            alert("Error campo no valido");
+            SweetAlert.swal("Error","Capo invalido","error");
         }
     }
  
@@ -638,6 +642,45 @@ app.controller('arqCtrl', function($scope, secciontFactory, billService){
         } else{
             billService.delateArq(elemento);
         };
+    };
+    
+});
+
+/**********************************************************************************************************
+ arqCtrl
+**********************************************************************************************************/
+app.controller('sendCtrl', function($scope,SweetAlert,navService){
+
+    // secciontFactory.getS4(function(data) {
+    //     $scope.rawData = data;
+
+    //     for(var i in $scope.rawData ){
+    //         var elemento = $scope.rawData[i];
+        
+    //         elemento.checked =  false;
+    //         elemento.disabled = false;
+            
+    //         $scope.sectionsData.push(elemento);
+    //     };
+    // });
+
+    $scope.sendMail = function(){
+
+        SweetAlert.swal({
+           title: "Enviado a: "+ navService.userEmail,
+           text: "La cotizacion se envio con exito. ¿Desae cerrar terminar?",
+           type: "success",
+           showCancelButton: true,
+           confirmButtonColor: "#FF9500",
+           confirmButtonText: "Terminar",
+            cancelButtonColor: "#f3f3f3",
+           cancelButtonText: "Continuar",
+           closeOnConfirm: false}, 
+        function(){ 
+           SweetAlert.swal("Booyah!");
+        });
+
+
     };
     
 });
