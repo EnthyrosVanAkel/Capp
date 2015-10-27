@@ -63,9 +63,9 @@
               <div class="box box-success">
 
                 <div class="box-header with-border">
-                  <h3 class="box-title">Lista de Acabados</h3>
+                  <h3 class="box-title">Lista de Acabados a elegir</h3>
                    <div class="box-tools">
-                    <button onclick="location.href='departamentos-2-2.html';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/e/create';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -86,14 +86,16 @@
                       <tr>
                         <td>{{$escoger->id}}</td>
                         <td>
-                          <button class="btn btn-sm" onclick="location.href='departamentos-2-3.html';" >{{$escoger->seccion}}</button>
+                          <button class="btn btn-sm" onclick="location.href='/admin/catalogo/{{$catalogo->id}}/e/{{$escoger->id}}';" >{{$escoger->seccion}}</button>
                         </td>
                         @foreach($escoger->escogeroptions as $opcion)
                         <td>{{$opcion->nombre}}</td>
                         @endforeach
                         <td>
-                          <button class="btn btn-sm" ><i class="fa fa-times"></i></button>
-                          <button class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>
+                        {!! Form::open(['method'  => 'DELETE','action' =>['EscogerController@destroy',$catalogo->id,$escoger->id]]) !!}
+                        {!! Form::submit('X',['class'=>'btn btn-sm']) !!}
+                        {!! Form::close() !!}
+                        <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/e/{{$escoger->id}}/edit';" class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>
                         </td>
                       </tr>
                       @endforeach
@@ -111,7 +113,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Lista de Opcionales</h3>
                    <div class="box-tools">
-                    <button onclick="location.href='#';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/onclick/create';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 
@@ -132,7 +134,7 @@
                       <tr>
                         <td>{{$opcional->id}}</td>
                         <td>
-                          <button class="btn btn-sm" onclick="location.href='departamentos-2-3.html';" >{{$opcional->seccion}}</button>
+                          <button class="btn btn-sm" onclick="location.href='/admin/catalogo/{{$catalogo->id}}/o/{{$opcional->id}}';" >{{$opcional->seccion}}</button>
                         </td>
                         @if (count($opcional->opcionaloptions) === 3)
                         	@foreach($opcional->opcionaloptions as $opcion)
@@ -144,17 +146,21 @@
                        		@endforeach
                        		<td> </td>
                         @elseif (count($opcional->opcionaloptions) === 1)
-                        	<td>{{$opcion->nombre}}</td>
-                        	<td> </td>
-                        	<td> </td>
+                        	@foreach($opcional->opcionaloptions as $opcion)
+                            <td>{{$opcion->nombre}}</td>
+                          @endforeach
+                        	<td>---</td>
+                        	<td>---</td>
                         @elseif (count($opcional->opcionaloptions) === 0)
-                        	<td> </td>
-                        	<td> </td>
-                        	<td> </td>
+                        	<td>---</td>
+                        	<td>---</td>
+                        	<td>---</td>
                         @endif
                         <td>
-                          <button class="btn btn-sm" ><i class="fa fa-times"></i></button>
-                          <button class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>
+                          {!! Form::open(['method'  => 'DELETE','action' =>['OpcionalController@destroy',$catalogo->id,$opcional->id]]) !!}
+                        {!! Form::submit('X',['class'=>'btn btn-sm']) !!}
+                        {!! Form::close() !!}
+                        <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/o/{{$opcional->id}}/edit';" class="btn btn-sm" ><i class="fa fa-pencil-square-o"></i></button>
                         </td>
                       </tr>
                       @endforeach

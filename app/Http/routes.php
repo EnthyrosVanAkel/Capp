@@ -10,11 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//Cotizaciones
+Route::get('admin/cotizaciones','CotizacionController@index');
+Route::get('admin/cotizaciones/{id}','CotizacionController@show');
 //Catalogo
 Route::resource('admin/catalogo','CatalogoController');
 //Predeterminado
 Route::resource('admin/catalogo/{catalogo}/p','PredeterminadoController');
+//Escoger
+Route::resource('admin/catalogo/{catalogo}/e','EscogerController');
+//EscogerOptions
+Route::patch('admin/catalogo/{catalogo}/e/{escoger}/o/{opcion}/edit','EscogerOptionsController@update');
+//Escoger
+Route::resource('admin/catalogo/{catalogo}/o','OpcionalController');
 //Arquitecto
 Route::resource('admin/catalogo/{catalogo}/a','ArquitectoController');
 //Tax

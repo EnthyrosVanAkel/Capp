@@ -10,7 +10,7 @@ var modelos = [
 **********************************************************************************************************/
 
 
-var navArray = ['Inicio de Secion','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
+var navArray = ['Inicio de Sesión','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
 
 
 app.config(

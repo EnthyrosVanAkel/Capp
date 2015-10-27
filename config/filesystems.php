@@ -47,9 +47,7 @@ return [
         'local' => [
 
 'driver' => 'local',
-
 'root' => public_path().'/imgs',
-
 ],
 
         'ftp' => [

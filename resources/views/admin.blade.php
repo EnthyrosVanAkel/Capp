@@ -25,7 +25,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="cotizaciones.html" class="logo">
+        <a href="/admin/cotizaciones" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini">
             <img src="/admin/img/vidalta.png" width="10px">
@@ -54,7 +54,7 @@
           <ul class="sidebar-menu">
 
             <li>
-              <a href="/admin/cotizacion">
+              <a href="/admin/cotizaciones">
                 <i class="fa fa-file"></i> <span>Cotizaciones</span>
               </a>
             </li>
@@ -75,6 +75,8 @@
       @yield('cotizacion')
       @yield('catalogo')
       @yield('predeterminado')
+      @yield('escoger')
+      @yield('opcional')
       @yield('arquitecto')
       @yield('tax')
       
@@ -84,10 +86,17 @@
      
     </div> <!-- Contenedor general -->
 
-    <!-- jQuery 2.1.4 -->
+     <!-- jQuery 2.1.4 -->
     <script src="/admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="/admin/bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/admin/dist/js/app.min.js"></script>
+
+    @yield('js')
 
   </body>
 

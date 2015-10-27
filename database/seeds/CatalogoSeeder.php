@@ -12,6 +12,6 @@ class CatalogoSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Catalogo::class,1)->create();
+        factory(App\Catalogo::class,3)->create();
     }
 }

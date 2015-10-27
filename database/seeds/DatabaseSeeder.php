@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
 
         //$this->call(CatalogoSeeder::class);
         //$this->call(PredeterminadoSeeder::class);
-        $this->call(EscogerSeeder::class);
-        $this->call(OpcionalSeeder::class);
+        //$this->call(EscogerSeeder::class);
+        //$this->call(OpcionalSeeder::class);
         //$this->call(ArquitectoSeeder::class);
         //$this->call(TaxSeeder::class);
+        $this->call(CotizadorSeeder::class);
+
 
         
         Model::reguard();

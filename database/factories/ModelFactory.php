@@ -98,7 +98,16 @@ $factory->define(App\Tax::class, function (Faker\Generator $faker) {
     return [
         'catalogo_id' => 1,
         'concepto' => $faker->name,
-        'monto' => .134,
+        'monto' => 12,
     ];
 });
 
+// factory de Cotizaciones
+$factory->define(App\Cotizacion::class, function (Faker\Generator $faker) {
+    return [
+        'modelo' => $faker->name,
+        'departamento' => $faker->numberBetween($min = 0, $max = 250),
+        'email' => $faker->email,
+        'url_cotizacion' => $faker->imageUrl($width = 640, $height = 480),
+    ];
+});

@@ -10,14 +10,13 @@
     <meta name="author" content="">
     <link rel="icon" href="">
 
-    <title>Login Cotizador</title>
+    <title>Vidalta | Cotizador</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Main CSS -->
   <link href="css/main.css" rel="stylesheet">
-  <!-- Style Wizard CSS -->
-  <link href="/css/gsdk-base.css" rel="stylesheet" />
+  
  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
@@ -26,50 +25,39 @@
 
   </head>
 
-  <body class=" container image-container"  ng-app="app">
+  <body class=" container image-container vertical-center"  ng-app="app">
 
-      <div class="col-sm-10 col-sm-offset-1" ng-controller="generalCtrl">
+      <div class=" card col-sm-10 wizard-body" ng-controller="generalCtrl">
          
           <!--      Wizard container        -->   
-          <div class="wizard-container vertical-80">  
-                  <div class="card wizard-card ct-wizard-blue">
+          <div class="wizard-container ">  
+                  <div class=" wizard-card ">
 
                     <!--   Wizard Header   -->
-                    <div class="wizard-header">
-                      <h3><%title%> <b>COTIZADOR</b></h3>
+                    <div class="wizard-header row">
+                      
+                      <h3 class="col-xs-4 col-sm-5"><b>VIDALTA</b> COTIZADOR</h3>
+                      <img src="Img/vidalta.png" class=" col-xs-4 logo pull-right">
                     </div> <!--  END Wizard Header   -->
-                    <%count%>
+                    
                     <ul class="nav nav-pills" >
-                      <li class="tab-size" style="width:<%getSize()%>%;"  ng-repeat="nav in navArray" ng-show="isLogIn($index)" ng-class="{active:isActive($index)}">
-                        <a href="#/" data-toggle="tab">
+                      <li style="width:<%getSize()%>%;"  ng-repeat="nav in navArray" ng-show="isLogIn($index)" ng-class="{active:isActive($index)}">
+                        <a data-toggle="tab">
                           <%nav%>
                         </a>
                       </li>
                     </ul>  
 
-                    <div class="tab-pane" ng-view></div>
+                    <div ng-view></div>
 
-                    <div class="row">
-                      <div class=" col-sm-6 text-left " >
-                        <button class="btn btn-fill btn-warning btn-wd btn-sm " ng-click="prev()" ng-show="prevActive()">Prev</button>
-                      </div>
-                      <div class=" col-sm-6 text-right" >
-                        <button class="btn btn-fill btn-warning btn-wd btn-sm " ng-click="next()" ng-show="nextActive()">Next</button>
-                      </div>
+                    <div class="move-btns">
+                      <button class="btn btn-move btn-left" ng-click="prev()" ng-show="prevActive()"><i class="fa fa-angle-double-left fa-2x"></i></button>
+                      <button class="btn btn-move  btn-right" ng-click="next()" ng-show="nextActive()"><i class="fa fa-angle-double-right fa-2x"></i></button>
                     </div>
+                   
+    
                   </div>
           </div> <!-- wizard container -->
-
- <!--         <footer class="row vertical-20 text-center" ng-controller="billCtrl as bill">
-          <div class="wizard-container bill" ng-show="nextActive()">
-             <div class="card wizard-footer ct-wizard-blue">
-
-                      <h4 class=" col-sm-6 text-left"> Total :</h4>
-                      <h4 class=" col-sm-6 text-right"><%bill.totalBill | currency%> </h4>
-
-             </div>
-          </div>      
-        </footer> -->
 
       </div>
 
