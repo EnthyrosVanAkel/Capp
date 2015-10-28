@@ -6,10 +6,9 @@
          <!--  <label  for="inputDepto" class="text-right">Departamento</label> -->
           <select class="form-control" 
                     title="apartmentNumber"  
-                    ng-model="userApartmenteNumber"
-          
+                    ng-model="userModel"
                     ng-options="numbers for numbers in models"
-                    ng-change="getApartmentNumber(userApartmenteNumber)" required>
+                    required >
             <option value="">Seleleciona el tipo de apartamento</option>  
           </select>
 

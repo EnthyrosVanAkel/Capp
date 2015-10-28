@@ -4,6 +4,9 @@ var modelos = [
     "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
 ];
 
+var deptos_url = 'json/deptos.json';
+var post_url = 'json/access.json';
+
 
  /**********************************************************************************************************
  Config APP
@@ -87,7 +90,7 @@ app.run(function(navService) {
 app.service('navService', function() {
 
     this.title = "VIDALTA";
-    this.userEmail= "";
+
     this.navArray = navArray;
     this.count = 0;
     this.subCount = {};
@@ -158,6 +161,10 @@ app.service('navService', function() {
 **********************************************************************************************************/
 
 app.service('billService', function(secciontFactory) {
+
+    this.userEmail = "";
+    this.deptoModel = "";
+    this.deptoNumber = 0;
 
     this.subTotalBill = 0;
     this.subTotalAditional = 0;
@@ -254,21 +261,21 @@ secciontFactory
 **********************************************************************************************************/
 
 app.factory('secciontFactory',function($http){
-    var get_JSON = {};
+    var JSON_url = '';
 
-    var postSubmit = function post_submit(post_data,callback){
-        $http({
-            url: "json/access.json",
-                method: "GET"
-                // ,
-                // data:post_data
-            }).success(callback);
-    };
+    // var postSubmit = function post_submit(post_data,callback){
+    //     $http({
+    //         url: "json/access.json",
+    //             method: "GET"
+    //             // ,
+    //             // data:post_data
+    //         }).success(callback);
+    // };
 
     function getData(callback){
           $http({
             method: 'GET',
-            url: get_JSON.url,
+            url: JSON_url,
             cache: true
           }).success(callback);
     }
@@ -310,6 +317,29 @@ app.factory('secciontFactory',function($http){
               var baseData = data.tax;
               callback( baseData );
             });
+        },
+        // get all the comments
+        get : function(url) {
+            return $http.get(url);
+        },
+        // save a comment (pass in comment data)
+        save : function(commentData , url) {
+            return $http({
+                method: 'POST',
+                url: url,
+                // data: $.param(commentData)
+                data: commentData
+            });
+        },
+        // destroy a comment
+        destroy : function(url , id) {
+            return $http.delete(url + id);
+        },
+                // destroy a comment
+        setUrl : function(url) {
+            JSON_url = url;
+            console.log("url: " + JSON_url);
+            return true;
         }
     };
 });
@@ -399,34 +429,52 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
 **********************************************************************************************************/
 
 app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAlert) {
-    $scope.user = {};
-    $scope.models = modelos;
-    
-    $scope.getApartmentTipe = function(array){ 
-        this.user.apartmentTipe = array.tipe;
-        
-    }
-    
-    $scope.getApartmentNumber = function(data){ 
-        this.user.apartmentNumber = data;
-        
-    }
+
+    $scope.deptos_url = deptos_url;
+    $scope.post_url = post_url;
+    $scope.models = [];
+
+    secciontFactory.get( deptos_url )
+        .success(function(data) {
+            var deptos = data;
+            for (var i = 0 ; i < deptos.length; i++) {
+                var depto = deptos[i].depto;
+                $scope.models.push(depto);
+            };
+            console.log($scope.models);
+        });
     
     $scope.submit = function(valid){ 
         if(valid){
-            $scope.user.modelo = this.userDepto;
-            navService.userEmail= this.userEmail;
-            $scope.user.aceso= this.userPassword;
+            
+            navService.userEmail = this.userEmail;
+            navService.deptoModel = this.userModel;
+            navService.deptoNumber = this.userDepto;
 
-            secciontFactory.getModels($scope.user,function(data) {
-                var data_post = data;
-                if (data_post.url){
-                    navService.next();
-                }else{
-                    SweetAlert.swal("Error","Contraseña no valida","error");
-                }
-            });
+            var post = {};
+            post.modelo = this.userDepto;
+            post.acceso = this.userPassword;
+            console.log(post);
 
+            secciontFactory.save(post, post_url)
+                .success(function(data){
+                    // if successful, we'll need to refresh the comment list
+                    secciontFactory.get(post_url)
+                        .success(function(getData) {
+                            console.log(getData);
+                            
+                            if (getData.url != null) {
+                                secciontFactory.setUrl(getData.url);
+                                navService.next();
+                            }else{
+                                SweetAlert.swal("Error","Contraseña no valida","error");
+                            }
+                            
+                        });
+                })
+                .error(function(data) {
+                    SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");
+                });
         } else{
             SweetAlert.swal("Error","Capo invalido","error");
         }
