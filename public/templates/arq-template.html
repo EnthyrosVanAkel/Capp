@@ -2,10 +2,10 @@
   <div class="thumbnail-box">
 
     <div class="thumbnail col-xs-4" ng-repeat="arq in sectionsData">
-        <img ng-src="/imgs/<%arq.url_img%>" width="150px" >
         <img ng-src="<%arq.url_img%>" width="150px" >
         <div class="caption">
           <h4>
+            <samp class="product-text"><%arq.nombre%></samp>
           </h4>
           <p class="text-left">
             <%arq.descripcion%>

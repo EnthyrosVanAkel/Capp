@@ -3,22 +3,30 @@
 
       <form name="LogIn" class="form-signin col-sm-8 col-sm-offset-2"  ng-submit="submit(LogIn.$valid)" novalidate>
           
+         <!--  <label  for="inputDepto" class="text-right">Departamento</label> -->
           <select class="form-control" 
                     title="apartmentNumber"  
                     ng-model="userApartmenteNumber"
           
                     ng-options="numbers for numbers in models"
                     ng-change="getApartmentNumber(userApartmenteNumber)" required>
-            <option value="">Selecciona el tipo de apartamento</option>  
             <option value="">Seleleciona el tipo de apartamento</option>  
           </select>
 
+          <!-- <label  for="inputDepto" class="text-right">Departamento</label> -->
           <input name="depto" type="number" id="inputDepto" class="form-control" placeholder="Department Number" ng-model="userDepto"    required >
+          <p ng-show="LogIn.depto.$invalid && !LogIn.depto.$pristine " class="text-danger">Número de departamento no valido: <b>123</b> </p>                                    
 
+          <!-- <label for="inputEmail" >Email address</label> -->
           <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" ng-model="userEmail" required >
+          <p ng-show="LogIn.email.$invalid && !LogIn.email.$pristine " class="text-danger"> Ingrese un e-mail valido: <b>usuario@ejemplo.com</b> </p>
 
 
+          <!-- <label for="inputPassword">Password</label> -->
+          <input type="Password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" ng-model="userPassword" ng-minlength="10" required>
+          <p ng-show=" LogIn.inputPassword.$error.minlength " class="text-danger"> El password requiere del almenos 10 caracteres</p>
 
+          <button class="btn btn-fill btn-warning btn-wd btn-sm btn-form" type="submit" ng-class="{disabled:LogIn.$invalid}" ng-click="user.print" >Inicia</button>
 
       </form>     
 </div><!--   END Wizard Content    -->
