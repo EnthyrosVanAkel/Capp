@@ -69,6 +69,7 @@ app.config(
                 // console.log(routeParams);
                 // console.log(path);
                 // console.log(search);
+                alert("reload");
                 location.reload();
                 return "/";
               }
@@ -78,8 +79,9 @@ app.config(
 
 app.run(function(navService) {
     if (navService.count == 0) {
-        location.reload();
+        location.href = '#/';
         navService.count = 0;
+        alert("se va a 0");
     };
 });
 
@@ -260,7 +262,10 @@ app.service('billService', function(secciontFactory) {
 secciontFactory
 **********************************************************************************************************/
 
-app.factory('secciontFactory',function($http){
+//app.factory('secciontFactory',function($http,$httpParamSerializerJQLike){
+app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike', 
+    function($http , $httpParamSerializerJQLike ) {
+
     var JSON_url = '';
 
     // var postSubmit = function post_submit(post_data,callback){
@@ -324,12 +329,30 @@ app.factory('secciontFactory',function($http){
         },
         // save a comment (pass in comment data)
         save : function(commentData , url) {
+            
+            //return $http.post( url , commentData );
+
             return $http({
                 method: 'POST',
                 url: url,
                 // data: $.param(commentData)
-                data: commentData
+                data: commentData,
+                headers:'application/x-www-form-urlencoded'
             });
+
+            // return $http({
+            //     method: 'POST',
+            //     url: url,
+            //     params:commentData
+            // });
+            
+            // return $http({
+            //       method: 'POST',
+            //       url: url,
+            //       data: $httpParamSerializerJQLike(commentData),
+            //      // headers: 'application/x-www-form-urlencoded'
+            // })
+
         },
         // destroy a comment
         destroy : function(url , id) {
@@ -342,7 +365,9 @@ app.factory('secciontFactory',function($http){
             return true;
         }
     };
-});
+// });
+ }]);
+
 
 
  /**********************************************************************************************************
