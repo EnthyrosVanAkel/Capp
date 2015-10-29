@@ -329,15 +329,14 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
         },
         // save a comment (pass in comment data)
         save : function(commentData , url) {
-            
+
             //return $http.post( url , commentData );
 
             return $http({
-                method: 'POST',
+                method: 'GET',
                 url: url,
                 // data: $.param(commentData)
-                data: commentData,
-                headers:'application/x-www-form-urlencoded'
+                data: commentData
             });
 
             // return $http({
