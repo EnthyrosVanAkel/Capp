@@ -55,10 +55,14 @@ class CotizacionController extends Controller
     {
         //
         $cotizacion = Cotizacion::find($id);
-        $vista = \View::make('Admin/cotizacion/pdf',compact('cotizacion'))->render();
+        //return view('Admin/cotizacion/pdf',compact('cotizacion'));
+
+        $view =  \View::make('Admin/cotizacion/pdf', compact('cotizacion'))->render();
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($vista);
-        return $pdf->stream('invoice');
+        $pdf->loadHTML($view);
+        $nombre= $cotizacion->id;
+        $nombre= $nombre . '.pdf';
+        return $pdf->download($nombre);
     }
 
     /**
@@ -94,5 +98,4 @@ class CotizacionController extends Controller
     {
         //
     }
-
 }

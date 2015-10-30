@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Cotización</title>
-    <link rel="stylesheet" href="{{ asset('cotizador/style.css')  }}" media="all" />
+    <link rel="stylesheet" href="cotizador/style.css" media="all" />
   </head>
   <body>
     <header class="clearfix">
       <div id="logo">
-        <img src="/cotizador/vidalta.png">
+        <img src="cotizador/vidalta.png">
       </div>
       <h1>Cotización MX151029</h1>
       <div id="company" class="clearfix">

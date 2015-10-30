@@ -4,8 +4,8 @@ var modelos = [
     "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
 ];
 
-var deptos_url = 'json/deptos.json';
-var post_url = 'json/access.json';
+var deptos_url = 'http://localhost:8000/api/v1/lista';
+var post_url = 'http://localhost:8000/api/v2/acceso';
 
 
  /**********************************************************************************************************
@@ -336,7 +336,7 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
                 method: 'GET',
                 url: url,
                 // data: $.param(commentData)
-                data: commentData
+                params: commentData
             });
 
             // return $http({
@@ -476,25 +476,26 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
             navService.deptoNumber = this.userDepto;
 
             var post = {};
-            post.modelo = this.userDepto;
+            post.modelo = this.userModel;
             post.acceso = this.userPassword;
             console.log(post);
 
             secciontFactory.save(post, post_url)
                 .success(function(data){
+                    console.log(data);
                     // if successful, we'll need to refresh the comment list
-                    secciontFactory.get(post_url)
-                        .success(function(getData) {
-                            console.log(getData);
+                    //secciontFactory.get(post_url)
+                      //  .success(function(getData) {
+                        //    console.log(getData);
                             
-                            if (getData.url != null) {
-                                secciontFactory.setUrl(getData.url);
-                                navService.next();
-                            }else{
-                                SweetAlert.swal("Error","Contraseña no valida","error");
-                            }
+                            //if (getData.url != null) {
+                              //  secciontFactory.setUrl(getData.url);
+                               // navService.next();
+                            //}else{
+                              //  SweetAlert.swal("Error","Contraseña no valida","error");
+                            //}
                             
-                        });
+                      //  });
                 })
                 .error(function(data) {
                     SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");

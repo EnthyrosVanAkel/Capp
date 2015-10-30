@@ -16,10 +16,8 @@
   <link href="/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Main CSS -->
   <link href="css/main.css" rel="stylesheet">
-  
- <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+  <!-- sweet-alert CSS -->
+  <link href="css/sweet-alert.css" rel="stylesheet">
   <!-- Font Awesome CSS -->
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 
@@ -64,12 +62,16 @@
      
 
 
-
-
+  <!--   JQuery   -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <!--   Angular js   -->
   <script src="/js/angular.min.js"></script>
   <!--   Angular js Route   -->
   <script src="/js/angular-route.min.js"></script>
+  <!-- sweet-alert js -->
+  <script src="/js/sweet-alert.min.js"></script>
+  <!-- sweet-alert js -->
+  <script src="/js/SweetAlert.min.js"></script>
   <!--   Log In js    -->
   <script src="/js/app.js"></script>  
 
