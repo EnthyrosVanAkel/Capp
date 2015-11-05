@@ -345,7 +345,7 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
             return $http.get(url);
         },
         // save a co**ent (pass in co**ent data)
-        save : function(co**entData , url) {
+        save : function(comentData , url) {
 
             //return $http.post( url , co**entData );
 
@@ -353,7 +353,7 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
                 method: 'GET',
                 url: url,
                 // data: $.param(co**entData)
-                params: co**entData
+                params: comentData
             });
 
             // return $http({
@@ -500,6 +500,8 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
             secciontFactory.save(post, post_url)
                 .success(function(data){
                     console.log(data);
+
+                    
                     // if successful, we'll need to refresh the co**ent list
                     //secciontFactory.get(post_url)
                       //  .success(function(getData) {
@@ -518,7 +520,7 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                     SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");
                 });
         } else{
-            SweetAlert.swal("Error","Capo invalido","error");
+            SweetAlert.swal("Error","Campo invalido","error");
         }
     }
  
