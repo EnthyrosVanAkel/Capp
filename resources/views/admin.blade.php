@@ -63,6 +63,11 @@
                 <i class="fa fa-building"></i> <span>Departamentos</span>
               </a>
             </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-sign-out"></i> <span>Cerran Sección</span>
+              </a>
+            </li>
 
           </ul>
         </section>
