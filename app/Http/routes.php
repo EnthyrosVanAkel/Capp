@@ -10,6 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+// Authentication routes...
+Route::get('admin/login', 'UsuarioController@login');
+Route::post('admin/login', 'UsuarioController@acceso');
+Route::get('admin/logout', 'UsuarioController@logout');
+
+// Registration routes...
+Route::get('admin/register', 'UsuarioController@registrar');
+Route::post('admin/register', 'UsuarioController@registrado');
+
+
 //Cotizaciones
 Route::get('admin/cotizaciones','CotizacionController@index');
 Route::get('admin/cotizaciones/{id}','CotizacionController@show');
