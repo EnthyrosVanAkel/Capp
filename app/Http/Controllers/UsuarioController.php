@@ -1,5 +1,24 @@
 <?php
-
+/*
+************************************************************************
+************************************************************************
+**                   *********** **** ************                    **
+****                 **********        **********                    ***
+*****                 ********          ********                    ****
+******               Project: Cotizador Vidalta                   ******
+*******                  Date: Oct-Nov 2015                      *******
+******* ======================================================== *******
+******         BackEnd developer: EnthyrosVanAkel in github       ******
+*****            FrontEnd developer: miguueelo in github           *****
+*******************  ============================== ********************
+************************** For: QubitWorks  ****************************
+******************************          ********************************
+********************************       *********************************
+*********************************     **********************************
+**********************************   ***********************************
+*********************************** ************************************
+************************************************************************
+*/
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegistrarUserRequest;
@@ -9,7 +28,6 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Log;
 
 class UsuarioController extends Controller
 {
@@ -57,6 +75,15 @@ class UsuarioController extends Controller
        $usuario->save();
        return redirect('admin/login');
    }
+
+
+   public function logout(){
+    Auth::logout();
+    return redirect('admin/login');
+   }
+
+
+
 }
 
 

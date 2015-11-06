@@ -26,7 +26,7 @@
                   </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <img class="profile-user-img img-responsive img-circle" src="{{$opcion->url_img}}" alt="{{$opcion->nombre}}">
+                  <img class="profile-user-img img-responsive img-circle" src="/imgs/{{$opcion->url_img}}" alt="{{$opcion->nombre}}">
                   <h3 class="profile-username text-center">{{$opcion->nombre}}</h3>    
                   <ul class="nav nav-stacked">
                     <li>

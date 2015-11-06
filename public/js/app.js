@@ -1,23 +1,3 @@
-// ************************************************************************
-// ************************************************************************
-// **                   *********** **** ************                    **
-// ****                 **********        **********                    ***
-// *****                 ********          ********                    ****
-// ******               Project: Cotizador Vidalta                   ******
-// *******                  Date: Oct-Nov 2015                      *******
-// ******* ======================================================== *******
-// ******         BackEnd developer: EnthyrosVanAkel in github       ******
-// *****            FrontEnd developer: miguueelo in github           *****
-// *******************  ============================== ********************
-// ************************** For: QubitWorks  ****************************
-// ******************************          ********************************
-// ********************************       *********************************
-// *********************************     **********************************
-// **********************************   ***********************************
-// *********************************** ************************************
-// ************************************************************************
-
-
 var app = angular.module('app', ['ngRoute','oitozero.ngSweetAlert']);
 
 var modelos = [
@@ -28,12 +8,13 @@ var deptos_url = 'http://localhost:8000/api/v1/lista';
 var post_url = 'http://localhost:8000/api/v2/acceso';
 
 
-/**********************************************************************************************************
+ /**********************************************************************************************************
  Config APP
 **********************************************************************************************************/
 
 
 var navArray = ['Inicio de Secion','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
+
 
 app.config(
         function($interpolateProvider) {
@@ -88,6 +69,7 @@ app.config(
                 // console.log(routeParams);
                 // console.log(path);
                 // console.log(search);
+                alert("reload");
                 location.reload();
                 return "/";
               }
@@ -99,6 +81,7 @@ app.run(function(navService) {
     if (navService.count == 0) {
         location.href = '#/';
         navService.count = 0;
+        alert("se va a 0");
     };
 });
 
@@ -340,41 +323,41 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
               callback( baseData );
             });
         },
-        // get all the co**ents
+        // get all the comments
         get : function(url) {
             return $http.get(url);
         },
-        // save a co**ent (pass in co**ent data)
-        save : function(comentData , url) {
+        // save a comment (pass in comment data)
+        save : function(commentData , url) {
 
-            //return $http.post( url , co**entData );
+            //return $http.post( url , commentData );
 
             return $http({
                 method: 'GET',
                 url: url,
-                // data: $.param(co**entData)
-                params: comentData
+                // data: $.param(commentData)
+                params: commentData
             });
 
             // return $http({
             //     method: 'POST',
             //     url: url,
-            //     params:co**entData
+            //     params:commentData
             // });
             
             // return $http({
             //       method: 'POST',
             //       url: url,
-            //       data: $httpParamSerializerJQLike(co**entData),
+            //       data: $httpParamSerializerJQLike(commentData),
             //      // headers: 'application/x-www-form-urlencoded'
             // })
 
         },
-        // destroy a co**ent
+        // destroy a comment
         destroy : function(url , id) {
             return $http.delete(url + id);
         },
-                // destroy a co**ent
+                // destroy a comment
         setUrl : function(url) {
             JSON_url = url;
             console.log("url: " + JSON_url);
@@ -500,9 +483,7 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
             secciontFactory.save(post, post_url)
                 .success(function(data){
                     console.log(data);
-
-                    
-                    // if successful, we'll need to refresh the co**ent list
+                    // if successful, we'll need to refresh the comment list
                     //secciontFactory.get(post_url)
                       //  .success(function(getData) {
                         //    console.log(getData);
@@ -520,7 +501,7 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                     SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");
                 });
         } else{
-            SweetAlert.swal("Error","Campo invalido","error");
+            SweetAlert.swal("Error","Capo invalido","error");
         }
     }
  

@@ -1,5 +1,24 @@
 <?php
-
+/*
+************************************************************************
+************************************************************************
+**                   *********** **** ************                    **
+****                 **********        **********                    ***
+*****                 ********          ********                    ****
+******               Project: Cotizador Vidalta                   ******
+*******                  Date: Oct-Nov 2015                      *******
+******* ======================================================== *******
+******         BackEnd developer: EnthyrosVanAkel in github       ******
+*****            FrontEnd developer: miguueelo in github           *****
+*******************  ============================== ********************
+************************** For: QubitWorks  ****************************
+******************************          ********************************
+********************************       *********************************
+*********************************     **********************************
+**********************************   ***********************************
+*********************************** ************************************
+************************************************************************
+*/
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEscogerRequest;
@@ -13,6 +32,11 @@ use App\EscogerOptions;
 
 class EscogerController extends Controller
 {
+    public function __construct()
+{
+    $this->middleware('auth');
+}
+
     //
     public function index()
     {
@@ -84,7 +108,7 @@ class EscogerController extends Controller
     }
 
     public function update($id_catalogo,$id,UpdateEscogerRequest $request){
-      $escoger =Escoger::find($id);
+      $escoger = Escoger::find($id);
       $escoger->update($request->all());
       return redirect('/admin/catalogo/'.$id_catalogo);
     }

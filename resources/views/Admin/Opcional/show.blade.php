@@ -21,9 +21,12 @@
               <div class="box box-primary direct-chat direct-chat-primary">
                 <div class="box-header with-border">
                   <h4>Opción <b>{{$opcion->nombre}}</b></h4>
+                  <div class="box-tools pull-right">
+                <button onclick="location.href='/admin/catalogo/{{$opcional->catalogo_id}}/o/{{$opcional->id}}/o/{{$opcion->id}}/edit';" class="btn btn-box-tool" ><i class="fa fa-pencil-square-o"></i></button>   
+                  </div>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <img class="profile-user-img img-responsive img-circle" src="{{$opcion->url_img}}" alt="{{$opcion->nombre}}">
+                  <img class="profile-user-img img-responsive img-circle" src="/imgs/{{$opcion->url_img}}" alt="{{$opcion->nombre}}">
                   <h3 class="profile-username text-center">{{$opcion->nombre}}</h3>    
                   <ul class="nav nav-stacked">
                     <li>

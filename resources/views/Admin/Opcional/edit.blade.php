@@ -1,7 +1,7 @@
 
 @extends('admin')
 
-@section('escoger')
+@section('opcional')
 
 <!-- Nombre de la Seccion -->
         <section class="content-header">
@@ -24,7 +24,7 @@
                 </div><!-- /.box-header -->
 
                 <!-- Form -->
-                {!! Form::model($escoger,['method' => 'PATCH','action'=>['EscogerController@update',$id_catalogo,$escoger->id]]) !!}
+                {!! Form::model($opcional,['method' => 'PATCH','action'=>['OpcionalController@update',$id_catalogo,$opcional->id]]) !!}
                    <div class="box-body">
 
                     <div class="form-group col-xs-12">

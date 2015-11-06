@@ -26,11 +26,23 @@ class CreateOpcionalRequest extends Request
         return [
             //
         'seccion' => 'required',
-        'nombre'=> 'required',
-        'descripcion'=> 'required',
-        'precio'=> 'required',
-        'proveedor'=> 'required',
-        'imagen'=> 'required'
+        'nombre1'=> 'required',
+        'descripcion1'=> 'required',
+        'precio1'=> 'required',
+        'proveedor1'=> 'required',
+        'imagen1'=> 'required',
+
+        'nombre2'=> 'required',
+        'descripcion2'=> 'required',
+        'precio2'=> 'required',
+        'proveedor2'=> 'required',
+        'imagen2'=> 'required',
+
+        'nombre3'=> 'required',
+        'descripcion3'=> 'required',
+        'precio3'=> 'required',
+        'proveedor3'=> 'required',
+        'imagen3'=> 'required',
         ];
     }
 }

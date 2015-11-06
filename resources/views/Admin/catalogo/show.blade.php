@@ -113,7 +113,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Lista de Opcionales</h3>
                    <div class="box-tools">
-                    <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/onclick/create';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
+                    <button onclick="location.href='/admin/catalogo/{{$catalogo->id}}/o/create';" class="btn btn-sm pull-right" ><i class="fa fa-plus-circle"></i> Agregar</button>
                   </div>
                 </div><!-- /.box-header -->
 

@@ -1,4 +1,24 @@
 <?php
+/*
+************************************************************************
+************************************************************************
+**                   *********** **** ************                    **
+****                 **********        **********                    ***
+*****                 ********          ********                    ****
+******               Project: Cotizador Vidalta                   ******
+*******                  Date: Oct-Nov 2015                      *******
+******* ======================================================== *******
+******         BackEnd developer: EnthyrosVanAkel in github       ******
+*****            FrontEnd developer: miguueelo in github           *****
+*******************  ============================== ********************
+************************** For: QubitWorks  ****************************
+******************************          ********************************
+********************************       *********************************
+*********************************     **********************************
+**********************************   ***********************************
+*********************************** ************************************
+************************************************************************
+*/
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +50,13 @@ Route::resource('admin/catalogo/{catalogo}/p','PredeterminadoController');
 //Escoger
 Route::resource('admin/catalogo/{catalogo}/e','EscogerController');
 //EscogerOptions
-Route::patch('admin/catalogo/{catalogo}/e/{escoger}/o/{opcion}/edit','EscogerOptionsController@update');
-//Escoger
+Route::get('admin/catalogo/{catalogo}/e/{escoger}/o/{opcion}/edit','EscogerOptionsController@edit');
+Route::patch('admin/catalogo/{catalogo}/e/{escoger}/o/{opcion}','EscogerOptionsController@update');
+//Opcional
 Route::resource('admin/catalogo/{catalogo}/o','OpcionalController');
+//OpcionalOptions
+Route::get('admin/catalogo/{catalogo}/o/{opcional}/o/{opcion}/edit','OpcionalOptionsController@edit');
+Route::patch('admin/catalogo/{catalogo}/o/{opcional}/o/{opcion}','OpcionalOptionsController@update');
 //Arquitecto
 Route::resource('admin/catalogo/{catalogo}/a','ArquitectoController');
 //Tax

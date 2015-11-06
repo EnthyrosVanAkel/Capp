@@ -36,28 +36,77 @@
                         <h3>Opcion A</h3>
 
                         {!! Form::label('nombre','Nombre: ') !!}
-                        {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre']) !!}
+                        {!! Form::text('nombre1',null,['class'=>'form-control','placeholder'=>'Nombre']) !!}
 
                         {!! Form::label('descripcion','Descripcion: ') !!}
-                        {!! Form::textarea('descripcion',null,['class'=>'form-control','row'=>'3','placeholder'=>'Descripcion....']) !!}
+                        {!! Form::textarea('descripcion1',null,['class'=>'form-control','row'=>'3','placeholder'=>'Descripcion....']) !!}
 
                         {!! Form::label('precio','Precio: ') !!}
                         <div class="input-group">
                           <span class="input-group-addon">$</span>
-                          {!! Form::text('precio',null,['class'=>'form-control','placeholder'=>'Precio']) !!}
+                          {!! Form::text('precio1',null,['class'=>'form-control','placeholder'=>'Precio']) !!}
 
                         </div>
                               
                         {!! Form::label('proveedor','Proveedor: ') !!}
-                        {!! Form::text('proveedor',null,['class'=>'form-control','placeholder'=>'Proveedor']) !!}
+                        {!! Form::text('proveedor1',null,['class'=>'form-control','placeholder'=>'Proveedor']) !!}
 
                                   
                         {!! Form::label('url_img','Imagen: ') !!}
-                        {!! form::file('imagen',null,['class' => 'form-control']) !!}
+                        {!! form::file('imagen1',null,['class' => 'form-control']) !!}
                         <p class="help-block">Archivo no mayor a 2 Mb</p>
                         
                       </div>
+                      <div class="col-xs-4">
+                        <h3>Opcion B</h3>
 
+                        {!! Form::label('nombre','Nombre: ') !!}
+                        {!! Form::text('nombre2',null,['class'=>'form-control','placeholder'=>'Nombre']) !!}
+
+                        {!! Form::label('descripcion','Descripcion: ') !!}
+                        {!! Form::textarea('descripcion2',null,['class'=>'form-control','row'=>'3','placeholder'=>'Descripcion....']) !!}
+
+                        {!! Form::label('precio','Precio: ') !!}
+                        <div class="input-group">
+                          <span class="input-group-addon">$</span>
+                          {!! Form::text('precio2',null,['class'=>'form-control','placeholder'=>'Precio']) !!}
+
+                        </div>
+                              
+                        {!! Form::label('proveedor','Proveedor: ') !!}
+                        {!! Form::text('proveedor2',null,['class'=>'form-control','placeholder'=>'Proveedor']) !!}
+
+                                  
+                        {!! Form::label('url_img','Imagen: ') !!}
+                        {!! form::file('imagen2',null,['class' => 'form-control']) !!}
+                        <p class="help-block">Archivo no mayor a 2 Mb</p>
+                        
+                      </div>
+                      <div class="col-xs-4">
+                        <h3>Opcion C</h3>
+
+                        {!! Form::label('nombre','Nombre: ') !!}
+                        {!! Form::text('nombre3',null,['class'=>'form-control','placeholder'=>'Nombre']) !!}
+
+                        {!! Form::label('descripcion','Descripcion: ') !!}
+                        {!! Form::textarea('descripcion3',null,['class'=>'form-control','row'=>'3','placeholder'=>'Descripcion....']) !!}
+
+                        {!! Form::label('precio','Precio: ') !!}
+                        <div class="input-group">
+                          <span class="input-group-addon">$</span>
+                          {!! Form::text('precio3',null,['class'=>'form-control','placeholder'=>'Precio']) !!}
+
+                        </div>
+                              
+                        {!! Form::label('proveedor','Proveedor: ') !!}
+                        {!! Form::text('proveedor3',null,['class'=>'form-control','placeholder'=>'Proveedor']) !!}
+
+                                  
+                        {!! Form::label('url_img','Imagen: ') !!}
+                        {!! form::file('imagen3',null,['class' => 'form-control']) !!}
+                        <p class="help-block">Archivo no mayor a 2 Mb</p>
+                        
+                      </div>
                     </div>
 
                   </div><!-- /.box-body -->
