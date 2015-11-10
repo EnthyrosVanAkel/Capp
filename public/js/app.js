@@ -167,9 +167,6 @@ app.service('billService', function(secciontFactory) {
     this.deptoModel = "";
     this.deptoNumber = 0;
 
-    this.subTotalBill = 0;
-    this.subTotalAditional = 0;
-    this.totalBill = 0;
     this.billArray = [];
     this.aditionalArray = [];
     this.taxesArray = [];
@@ -183,6 +180,11 @@ app.service('billService', function(secciontFactory) {
     this.baseArray.active = false;
     this.acabadosArray.active = false;
     this.adicionalesArray.active = false;
+
+    this.subTotalBill = 0;
+    this.subTotalAditional = 0;
+    this.iva = 0;
+    this.totalBill = 0;
 
     this.add = function(elemento){
         this.billArray.push(elemento); 
@@ -218,13 +220,13 @@ app.service('billService', function(secciontFactory) {
     };
 
     this.calcBill = function(){
-        this.calcSubTota();
+        this.calcSubTotal();
         this.calcAditional();
         this.getTaxes(this.subTotalBill);
         this.calcTotal();
     };
 
-    this.calcSubTota = function(){
+    this.calcSubTotal = function(){
         this.subTotalBill = 0;
         for (var i = this.billArray.length - 1; i >= 0; i--) {
             this.subTotalBill += this.billArray[i].precio;
@@ -251,7 +253,7 @@ app.service('billService', function(secciontFactory) {
         for (var i = this.taxesArray.length - 1; i >= 0; i--) {
             this.totalBill += this.taxesArray[i].taxAplay;
         };
-        this.totalBill += this.subTotalBill;
+        this.totalBill += this.subTotalBillf
     };
 
 });
@@ -465,10 +467,9 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
 
             secciontFactory.save(post, login_url)
                 .success(function(data){
-                    console.log(data);
+                    //console.log(data);
 
-                    if (data != null) {
-                       secciontFactory.setUrl(data.url);
+                    if (data != "invalido") {
                        navService.next();
                     }else{
                        SweetAlert.swal("Error","Contraseña no valida","error");
