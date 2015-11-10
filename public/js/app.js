@@ -4,9 +4,11 @@ var modelos = [
     "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
 ];
 
-var deptos_url = 'http://localhost:8000/api/v1/lista';
-var post_url = 'http://localhost:8000/api/v2/acceso';
-
+// var deptos_url = 'http://localhost:8000/api/v1/lista';
+// var login_url = 'http://localhost:8000/api/v2/acceso';
+var deptos_url = 'json/deptos.json';
+var login_url = 'json/demo.json';
+var post_url = 'json/deptos.json';
 
  /**********************************************************************************************************
  Config APP
@@ -14,7 +16,6 @@ var post_url = 'http://localhost:8000/api/v2/acceso';
 
 
 var navArray = ['Inicio de Secion','Intro','Base','Acabados','Adicionales','Arquitectos','Resumen','Enviar'];
-
 
 app.config(
         function($interpolateProvider) {
@@ -69,7 +70,6 @@ app.config(
                 // console.log(routeParams);
                 // console.log(path);
                 // console.log(search);
-                alert("reload");
                 location.reload();
                 return "/";
               }
@@ -81,7 +81,6 @@ app.run(function(navService) {
     if (navService.count == 0) {
         location.href = '#/';
         navService.count = 0;
-        alert("se va a 0");
     };
 });
 
@@ -264,9 +263,9 @@ secciontFactory
 
 //app.factory('secciontFactory',function($http,$httpParamSerializerJQLike){
 app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike', 
-    function($http , $httpParamSerializerJQLike ) {
+    function($http) {
 
-    var JSON_url = '';
+    var JSON_url = login_url;
 
     // var postSubmit = function post_submit(post_data,callback){
     //     $http({
@@ -323,35 +322,19 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
               callback( baseData );
             });
         },
-        // get all the comments
+        // get all the coments
         get : function(url) {
             return $http.get(url);
         },
-        // save a comment (pass in comment data)
-        save : function(commentData , url) {
-
-            //return $http.post( url , commentData );
-
+        // save a coment (pass in coment data)
+        save : function(comentData , url) {
             return $http({
                 method: 'GET',
                 url: url,
                 // data: $.param(commentData)
-                params: commentData
+                params: comentData,
+                cache: true
             });
-
-            // return $http({
-            //     method: 'POST',
-            //     url: url,
-            //     params:commentData
-            // });
-            
-            // return $http({
-            //       method: 'POST',
-            //       url: url,
-            //       data: $httpParamSerializerJQLike(commentData),
-            //      // headers: 'application/x-www-form-urlencoded'
-            // })
-
         },
         // destroy a comment
         destroy : function(url , id) {
@@ -455,7 +438,7 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
 app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAlert) {
 
     $scope.deptos_url = deptos_url;
-    $scope.post_url = post_url;
+    $scope.login_url = login_url;
     $scope.models = [];
 
     secciontFactory.get( deptos_url )
@@ -480,11 +463,18 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
             post.acceso = this.userPassword;
             console.log(post);
 
-            secciontFactory.save(post, post_url)
+            secciontFactory.save(post, login_url)
                 .success(function(data){
                     console.log(data);
-                    // if successful, we'll need to refresh the comment list
-                    //secciontFactory.get(post_url)
+
+                    if (data != null) {
+                       secciontFactory.setUrl(data.url);
+                       navService.next();
+                    }else{
+                       SweetAlert.swal("Error","Contraseña no valida","error");
+                    }
+
+                    //secciontFactory.get(login_url)
                       //  .success(function(getData) {
                         //    console.log(getData);
                             
@@ -494,7 +484,6 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                             //}else{
                               //  SweetAlert.swal("Error","Contraseña no valida","error");
                             //}
-                            
                       //  });
                 })
                 .error(function(data) {
