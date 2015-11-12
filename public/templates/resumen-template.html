@@ -2,8 +2,33 @@
 <div class="col-sm-10 col-sm-offset-1 wizard-body" > 
 
       <div class="col-sm-10 col-sm-offset-1">
-        <h6 class="info-text">Base y Seleccionados</h6>
+        <h6 class="info-text">Base</h6>
         <div class="media" ng-repeat="billItem in billArray" >
+          <div class="media-left">
+             <a href="#">
+              <img class="media-object" ng-src="<%billItem.url_img%>" width="40px">
+             </a>
+          </div>
+          <div class="media-body">
+            <h4 class="col-sm-8">
+                <samp class="product-text">
+                  <%billItem.nombre%>
+                </samp>
+                <small class="text-right" ng-class="{include:billItem.checked , noneInclude:(!billItem.checked)}" >
+                  <%billItem.basePrice | priceFilter%>
+                </small>
+              </h4>
+          </div>
+          <div class="media-right">
+            <input type="checkbox" id="<%billItem.id%>" disabled  ng-checked="billItem.checked" ng-model="billItem.checked"  ng-click="updateBill(billItem)"/>
+                <label for="<%billItem.id%>"></label>
+          </div>
+        </div>
+      </div>
+
+       <div class="col-sm-10 col-sm-offset-1">
+        <h6 class="info-text">Acabados</h6>
+        <div class="media" ng-repeat="billItem in billAcabados" >
           <div class="media-left">
              <a href="#">
               <img class="media-object" ng-src="<%billItem.url_img%>" width="40px">
@@ -29,7 +54,7 @@
       <div class="col-sm-10 col-sm-offset-1">
         <h6 class="info-text">Adicionales Seleccionados</h6>
         <div class="dataBox"  >
-          <div class="media" ng-repeat="billItem in aditionalArray" >
+          <div class="media" ng-repeat="billItem in billAditional" >
             <div class="media-left">
                <a href="#">
                 <img class="media-object" ng-src="<%billItem.url_img%>" width="40px">
@@ -101,9 +126,11 @@
           </div>
 
           <div class="col-xs-6 bill-box">
-              <h4> Total : <%bill.totalBill | currency%> </h4>
-              <h6 ng-show="hitch"> Total - Enganche : <%(bill.totalBill - hitch) | currency%> </h6>
-              <h6 ng-show="meses">Pago mensual : <%((bill.totalBill - hitch) / meses) | currency%> a <%meses%> meses</h6>
+              <h5> Sub Total : <%bill.totalBill | currency%> </h5>
+              <h5> IVA 16% : <%bill.iva | currency%> </h5>
+              <h4> Total : <%bill.afterTax | currency%> </h4>
+              <h6 ng-show="hitch"> Total - Enganche : <%(bill.afterTax - hitch) | currency%> </h6>
+              <h6 ng-show="meses">Pago mensual : <%((bill.afterTax - hitch) / meses) | currency%> a <%meses%> meses</h6>
 
           </div>
           

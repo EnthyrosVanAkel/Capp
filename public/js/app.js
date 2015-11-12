@@ -168,7 +168,8 @@ app.service('billService', function(secciontFactory) {
     this.deptoNumber = 0;
 
     this.billArray = [];
-    this.aditionalArray = [];
+    this.billAcabados = [];
+    this.billAditional = [];
     this.taxesArray = [];
     this.taxesActive = false;
     this.arqSelect = [];
@@ -183,46 +184,25 @@ app.service('billService', function(secciontFactory) {
 
     this.subTotalBill = 0;
     this.subTotalAditional = 0;
-    this.iva = 0;
     this.totalBill = 0;
+    this.iva = 0;
+    this.afterTax = 0;
 
-    this.add = function(elemento){
-        this.billArray.push(elemento); 
+    this.add = function(array, elemento){
+        array.push(elemento); 
     };
 
-    this.delate = function(elemento){
-        var index = this.billArray .indexOf(elemento);
+    this.delate = function(array, elemento){
+        var index = array.indexOf(elemento);
         if (index != null) {
-            this.billArray.splice(index, 1);
+            array.splice(index, 1);
         };
     };
 
-    this.addAditional = function(elemento){
-        this.aditionalArray.push(elemento); 
-    };
-
-    this.delateAditional = function(elemento){
-        var index = this.aditionalArray.indexOf(elemento);
-        if (index != null) {
-            this.aditionalArray.splice(index, 1);
-        };
-    };
-
-    this.addArq = function(elemento){
-        this.arqSelect.push(elemento); 
-    };
-
-    this.delateArq = function(elemento){
-        var index = this.arqSelect.indexOf(elemento);
-        if (index != null) {
-            this.arqSelect.splice(index, 1);
-        };
-    };
 
     this.calcBill = function(){
         this.calcSubTotal();
-        this.calcAditional();
-        this.getTaxes(this.subTotalBill);
+        this.getComitions(this.subTotalBill);
         this.calcTotal();
     };
 
@@ -231,16 +211,16 @@ app.service('billService', function(secciontFactory) {
         for (var i = this.billArray.length - 1; i >= 0; i--) {
             this.subTotalBill += this.billArray[i].precio;
         };
-    };
-
-    this.calcAditional = function(){
-        this.subTotalAditional = 0;
-        for (var i = this.aditionalArray.length - 1; i >= 0; i--) {
-            this.subTotalAditional += this.aditionalArray[i].precio;
+        for (var i = this.billAcabados.length - 1; i >= 0; i--) {
+            this.subTotalBill += this.billAcabados[i].precio;
+        };
+        for (var i = this.billAditional.length - 1; i >= 0; i--) {
+            this.subTotalAditional += this.billAditional[i].precio;
         };
     };
 
-    this.getTaxes = function(){
+
+    this.getComitions = function(){
         this.subTotalBill += this.subTotalAditional;
         for (var i = this.taxesArray.length - 1; i >= 0; i--) {
             var tax = this.taxesArray[i].monto/100;
@@ -253,7 +233,9 @@ app.service('billService', function(secciontFactory) {
         for (var i = this.taxesArray.length - 1; i >= 0; i--) {
             this.totalBill += this.taxesArray[i].taxAplay;
         };
-        this.totalBill += this.subTotalBillf
+        this.totalBill += this.subTotalBill
+        this.iva = this.totalBill * 0.16;
+        this.afterTax = this.iva + this.totalBill;
     };
 
 });
@@ -414,7 +396,8 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
 
     $scope.bill = billService;
     $scope.billArray = billService.billArray;
-    $scope.aditionalArray = billService.aditionalArray;
+    $scope.billAcabados = billService.billAcabados;
+    $scope.billAditional = billService.billAditional;
     $scope.arqSelect = billService.arqSelect;
     $scope.hitch;
     $scope.meses;
@@ -469,7 +452,7 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                 .success(function(data){
                     //console.log(data);
 
-                    if (data != "invalido") {
+                    if (data != "INVALIDO") {
                        navService.next();
                     }else{
                        SweetAlert.swal("Error","Contraseña no valida","error");
@@ -520,7 +503,7 @@ app.controller('baseCtrl', function($scope, secciontFactory, billService, navSer
                 elemento.basePrice = 0;
                 elemento.section = "Paquete Base";
 
-                billService.add(elemento);
+                billService.add( billService.billArray , elemento);
                 billService.baseArray.elementos.push(elemento);
             }
 
@@ -554,7 +537,7 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
                     elemento.section = section.seccion;
 
                     if (elemento.checked) {
-                        billService.add(elemento);
+                        billService.add( billService.billAcabados ,elemento);
                     };
                 };
                 section.selectedItem = 0;
@@ -579,8 +562,9 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
 
             oldItem.checked = false;
 
-            billService.delate(oldItem);
-            billService.add(elemento);
+            billService.delate(billService.billAcabados ,oldItem);
+            billService.add( billService.billAcabados ,elemento);
+
             section.selectedItem = newIndexItem;
 
             billService.calcBill();
@@ -650,17 +634,17 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
         if (newIndexItem == section.selectedItem) {
             var oldItem = section.opcionaloptions[section.selectedItem];
             oldItem.checked = false;
-            billService.delateAditional(oldItem);
+            billService.delate(billAditional ,oldItem);
             section.selectedItem = -1;
         } 
         else{
             if (elemento.checked && section.selectedItem != -1) {
                 var oldItem = section.opcionaloptions[section.selectedItem];
                 oldItem.checked = false;
-                billService.delateAditional(oldItem);
+                billService.delate(billAditional ,oldItem);
             };
             if (elemento.checked) {
-                billService.addAditional(elemento);
+                billService.add( billService.billAditional, elemento);
                 section.selectedItem = newIndexItem;
             };
         };
@@ -701,9 +685,9 @@ app.controller('arqCtrl', function($scope, secciontFactory, billService){
 
     $scope.arqUpdate = function(elemento){
         if (elemento.checked){
-            billService.addArq(elemento);
+            billService.add(billService.arqSelect,elemento);
         } else{
-            billService.delateArq(elemento);
+            billService.delate(billService.arqSelect,elemento);
         };
     };
     
@@ -712,7 +696,8 @@ app.controller('arqCtrl', function($scope, secciontFactory, billService){
 /**********************************************************************************************************
  arqCtrl
 **********************************************************************************************************/
-app.controller('sendCtrl', function($scope,SweetAlert,navService){
+app.controller('sendCtrl', function($scope,SweetAlert,navService, billService, secciontFactory){
+
 
     // secciontFactory.getS4(function(data) {
     //     $scope.rawData = data;
@@ -729,19 +714,73 @@ app.controller('sendCtrl', function($scope,SweetAlert,navService){
 
     $scope.sendMail = function(){
 
-        SweetAlert.swal({
-           title: "Enviado a: "+ navService.userEmail,
-           text: "La cotizacion se envio con exito. ¿Desae cerrar terminar?",
-           type: "success",
-           showCancelButton: true,
-           confirmButtonColor: "#FF9500",
-           confirmButtonText: "Terminar",
-            cancelButtonColor: "#f3f3f3",
-           cancelButtonText: "Continuar",
-           closeOnConfirm: false}, 
-        function(){ 
-           SweetAlert.swal("Booyah!");
-        });
+            // this.userEmail = "";
+            // this.deptoModel = "";
+            // this.deptoNumber = 0;
+
+            // this.billArray = [];
+            // this.billAditional = [];
+            // this.taxesArray = [];
+            // this.taxesActive = false;
+            // this.arqSelect = [];
+
+            // this.baseArray = [];
+            // this.acabadosArray = [];
+            // this.adicionalesArray = [];
+
+            // this.baseArray.active = false;
+            // this.acabadosArray.active = false;
+            // this.adicionalesArray.active = false;
+
+            // this.subTotalBill = 0;
+            // this.subTotalAditional = 0;
+            // this.totalBill = 0;
+            // this.iva = 0;
+            // this.afterTax = 0;
+
+
+        var post = {};
+
+        post.modelo = billService.deptoModel ;
+        post.numero = billService.deptoNumber ;
+        post.correo = billService.userEmail ;
+        // post.default = billService. ;
+        // post.escoger = billService. ;
+        // post.opcionales = billService. ;
+        // post.tax = {};
+        //post.tax.subTotal = {};
+        //post.tax.iva = {};
+        //post.tax.total = {};
+        //post.tax.enganche = {};
+        //post.tax.aEnganche = {};
+        //post.tax.meses = {};
+        //post.tax.pMeses = {};
+
+
+        secciontFactory.save(post, post_url)
+                .success(function(data){
+                    //console.log(data);
+
+                    SweetAlert.swal({
+                       title: "Enviado a: "+ navService.userEmail,
+                       text: "La cotizacion se envio con exito. ¿Desae cerrar terminar?",
+                       type: "success",
+                       showCancelButton: true,
+                       confirmButtonColor: "#FF9500",
+                       confirmButtonText: "Terminar",
+                        cancelButtonColor: "#f3f3f3",
+                       cancelButtonText: "Continuar",
+                       closeOnConfirm: false}, 
+                    function(){ 
+                       SweetAlert.swal("Booyah!");
+                    });
+
+                })
+                .error(function(data) {
+                    SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");
+                });
+
+        
 
 
     };
