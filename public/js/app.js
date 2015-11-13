@@ -248,8 +248,9 @@ secciontFactory
 //app.factory('secciontFactory',function($http,$httpParamSerializerJQLike){
 app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike', 
     function($http) {
+    var JSON = {};
 
-    var JSON_url = login_url;
+
 
     // var postSubmit = function post_submit(post_data,callback){
     //     $http({
@@ -261,52 +262,11 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
     // };
 
     function getData(callback){
-          $http({
-            method: 'GET',
-            url: JSON_url,
-            cache: true
-          }).success(callback);
+        callback(JSON);
     }
 
     return {
-        getModels: function(post_data,callback){
-            postSubmit(post_data,function(data) {
-                var baseData = data;
-                get_JSON = data;
-                callback( baseData );
-             });
-        },
-        getS1: function(callback){
-            getData(function(data) {
-              var baseData = data.predeterminado;
-              callback( baseData );
-            });
-        },
-        getS2: function(callback){
-            getData(function(data) {
-              var baseData = data.escoger;
-              callback( baseData );
-            });
-        },
-        getS3: function(callback){
-            getData(function(data) {
-              var baseData = data.opcional;
-              callback( baseData );
-            });
-        },
-        getS4: function(callback){
-            getData(function(data) {
-              var baseData = data.arquitecto;
-              callback( baseData );
-            });
-        },
-        getS5: function(callback){
-            getData(function(data) {
-              var baseData = data.tax;
-              callback( baseData );
-            });
-        },
-        // get all the coments
+        getJSON: getData,
         get : function(url) {
             return $http.get(url);
         },
@@ -316,8 +276,7 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
                 method: 'GET',
                 url: url,
                 // data: $.param(commentData)
-                params: comentData,
-                cache: true
+                params: comentData
             });
         },
         // destroy a comment
@@ -325,9 +284,8 @@ app.factory('secciontFactory', ['$http', '$httpParamSerializerJQLike',
             return $http.delete(url + id);
         },
                 // destroy a comment
-        setUrl : function(url) {
-            JSON_url = url;
-            console.log("url: " + JSON_url);
+        setData : function(data) {
+            JSON = data;
             return true;
         }
     };
@@ -402,9 +360,11 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
     $scope.hitch;
     $scope.meses;
 
-    secciontFactory.getS5(function(data) {
+    secciontFactory.getJSON(function(data) {
+
         if (billService.taxesActive == false) {
-            billService.taxesArray = data;
+            var baseData = data.tax;
+            billService.taxesArray = baseData;
 
             for (var i = billService.taxesArray.length - 1; i >= 0; i--) {
                 billService.taxesArray[i].taxAplay = 0;
@@ -453,10 +413,26 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                     //console.log(data);
 
                     if (data != "INVALIDO") {
+
+
+                       var Json_data = {};
+
+                        Json_data.predeterminado = data.predeterminado;
+                        Json_data.escoger = data.escoger;
+                        Json_data.opcional = data.opcional;
+                        Json_data.arquitecto = data.arquitecto;
+                        Json_data.tax = data.tax;
+
+                        //secciontFactory.setData(Json_data);
+                        secciontFactory.setData(data);
+
                        navService.next();
                     }else{
                        SweetAlert.swal("Error","Contraseña no valida","error");
                     }
+
+
+
 
                     //secciontFactory.get(login_url)
                       //  .success(function(getData) {
@@ -488,13 +464,15 @@ app.controller('baseCtrl', function($scope, secciontFactory, billService, navSer
 
     $scope.baseData = billService.baseArray;
 
-    secciontFactory.getS1(function(data) {
+    secciontFactory.getJSON(function(data) {
+
+        var baseData = data.predeterminado;
 
         if (billService.baseArray.active == false ){
             billService.baseArray.seccion = "Paquete Base";
             billService.baseArray.elementos = [];
 
-            $scope.rawData = data;
+            $scope.rawData = baseData;
 
             for(var i in $scope.rawData ){
                 var elemento = $scope.rawData[i];
@@ -520,11 +498,12 @@ app.controller('baseCtrl', function($scope, secciontFactory, billService, navSer
 app.controller('acabadosCtrl', function($scope, secciontFactory, billService, navService){
     $scope.sectionsData = billService.acabadosArray;
 
-    secciontFactory.getS2(function(data) {
+    secciontFactory.getJSON(function(data) {
 
         if (billService.acabadosArray.active == false){
 
-            $scope.rawData = data;
+            var baseData = data.escoger;
+            $scope.rawData = baseData;
 
             for(var i in $scope.rawData ){
                 var section = $scope.rawData[i];
@@ -593,12 +572,13 @@ app.controller('acabadosCtrl', function($scope, secciontFactory, billService, na
 app.controller('addCtrl', function($scope, secciontFactory, billService,navService){
     $scope.sectionsData = billService.adicionalesArray;
 
-    secciontFactory.getS3(function(data) {
+    secciontFactory.getJSON(function(data) {
 
 
         if (billService.adicionalesArray.active == false){
 
-            $scope.rawData = data;
+            var baseData = data.opcional;
+            $scope.rawData = baseData;
 
             for(var i in $scope.rawData ){
                 var section = $scope.rawData[i];
@@ -670,8 +650,9 @@ app.controller('addCtrl', function($scope, secciontFactory, billService,navServi
 app.controller('arqCtrl', function($scope, secciontFactory, billService){
     $scope.sectionsData = [];
 
-    secciontFactory.getS4(function(data) {
-        $scope.rawData = data;
+    secciontFactory.getJSON(function(data) {
+        var baseData = data.arquitecto;
+        $scope.rawData = baseData;
 
         for(var i in $scope.rawData ){
             var elemento = $scope.rawData[i];
