@@ -3,14 +3,7 @@
 
       <h6 class="info-text">Descarga tu Cotización</h6>
 
-      <div class="col-sm-6 btn-send">
-        <a href="" class="fa-stack  fa-4x">
-          <i class="fa  fa-circle-thin fa-stack-2x"></i>
-          <i class="fa fa-download fa-stack-1x"></i>
-        </a>
-        <h5><b>Descarga en PDF</b></h5>
-      </div>
-      <div class="col-sm-6 btn-send">
+      <div class="col-sm-12 btn-send">
         <a href="" class="fa-stack  fa-4x" ng-click="sendMail()">
           <i class="fa  fa-circle-thin fa-stack-2x"></i>
           <i class="fa fa-paper-plane fa-stack-1x"></i>
@@ -24,9 +17,8 @@
         estas a punto de disfrutar 
         <br/> 
         una experiencia <b>increíble</b></h4>
-        <button class="btn btn-fill btn-warning btn-wd btn-sm btn-form" onclick="location.reload();" >Finalizar</button>
+        <form>
+          <button class="btn btn-fill btn-warning btn-wd btn-sm btn-form" ng-disabled="send" onclick="location.reload();" >Finalizar</button>
+        </form>
       </div>
-
-
-
 </div><!--   END Wizard Content    -->

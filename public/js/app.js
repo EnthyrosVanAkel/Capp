@@ -166,6 +166,8 @@ app.service('billService', function(secciontFactory) {
     this.userEmail = "";
     this.deptoModel = "";
     this.deptoNumber = 0;
+    this.hitch = 0;
+    this.meses = 0;
 
     this.billArray = [];
     this.billAcabados = [];
@@ -327,6 +329,11 @@ app.controller('generalCtrl', function($scope, navService,secciontFactory) {
 
     $scope.prevActive = function(){
         return navService.prevActive();
+    };  
+
+
+    $scope.upThan = function(val1,val2){
+        return (val1 < val2) ? true : false;
     };   
 
     $scope.getSize = function(){
@@ -357,8 +364,8 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
     $scope.billAcabados = billService.billAcabados;
     $scope.billAditional = billService.billAditional;
     $scope.arqSelect = billService.arqSelect;
-    $scope.hitch;
-    $scope.meses;
+    $scope.hitch = billService.hitch;
+    $scope.meses = billService.meses;
 
     secciontFactory.getJSON(function(data) {
 
@@ -679,6 +686,8 @@ app.controller('arqCtrl', function($scope, secciontFactory, billService){
 **********************************************************************************************************/
 app.controller('sendCtrl', function($scope,SweetAlert,navService, billService, secciontFactory){
 
+    $scope.send = true;
+
 
     // secciontFactory.getS4(function(data) {
     //     $scope.rawData = data;
@@ -695,74 +704,54 @@ app.controller('sendCtrl', function($scope,SweetAlert,navService, billService, s
 
     $scope.sendMail = function(){
 
-            // this.userEmail = "";
-            // this.deptoModel = "";
-            // this.deptoNumber = 0;
-
-            // this.billArray = [];
-            // this.billAditional = [];
-            // this.taxesArray = [];
-            // this.taxesActive = false;
-            // this.arqSelect = [];
-
-            // this.baseArray = [];
-            // this.acabadosArray = [];
-            // this.adicionalesArray = [];
-
-            // this.baseArray.active = false;
-            // this.acabadosArray.active = false;
-            // this.adicionalesArray.active = false;
-
             // this.subTotalBill = 0;
             // this.subTotalAditional = 0;
             // this.totalBill = 0;
             // this.iva = 0;
             // this.afterTax = 0;
 
-
         var post = {};
 
         post.modelo = billService.deptoModel ;
         post.numero = billService.deptoNumber ;
         post.correo = billService.userEmail ;
-        // post.default = billService. ;
-        // post.escoger = billService. ;
-        // post.opcionales = billService. ;
-        // post.tax = {};
-        //post.tax.subTotal = {};
-        //post.tax.iva = {};
-        //post.tax.total = {};
-        //post.tax.enganche = {};
-        //post.tax.aEnganche = {};
-        //post.tax.meses = {};
-        //post.tax.pMeses = {};
+        post.default = billService.billArray ;
+        post.escoger = billService.billAcabados ;
+        post.opcionales = billService.billAditional ;
+        post.tax = {};
+        post.tax.subTotal = billService.totalBill;
+        post.tax.iva = billService.iva;
+        post.tax.total = billService.afterTax;
+        post.tax.enganche = billService.hitch;
+        post.tax.aEnganche = billService.afterTax - billService.hitch;
+        post.tax.meses = billService.meses;
+        post.tax.pMeses = post.tax.aEnganche / billService.meses;
 
 
         secciontFactory.save(post, post_url)
                 .success(function(data){
-                    //console.log(data);
-
+                    console.log(data);
+                    $scope.send = false;
                     SweetAlert.swal({
                        title: "Enviado a: "+ navService.userEmail,
                        text: "La cotizacion se envio con exito. ¿Desae cerrar terminar?",
                        type: "success",
-                       showCancelButton: true,
+                       showCancelButton: false,
                        confirmButtonColor: "#FF9500",
-                       confirmButtonText: "Terminar",
-                        cancelButtonColor: "#f3f3f3",
-                       cancelButtonText: "Continuar",
-                       closeOnConfirm: false}, 
+                       confirmButtonText: "Descargar",
+                       cancelButtonColor: "#f3f3f3",
+                       cancelButtonText: "Terminar",
+                       closeOnConfirm: true}, 
                     function(){ 
-                       SweetAlert.swal("Booyah!");
+                         var strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
+                         var URL = "https://www.google.com";
+                         var win = window.open(URL, "_blank");
                     });
 
                 })
                 .error(function(data) {
                     SweetAlert.swal("Error de conexion","Revise su conexión a internet","error");
                 });
-
-        
-
 
     };
     

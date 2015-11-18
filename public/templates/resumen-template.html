@@ -116,12 +116,16 @@
           </div> -->
           
           <div class="col-xs-6">
+            <form name="cotizacion">
 
-            <input type="number" class="form-control col-sm-6"  placeholder="Enganche" ng-model="hitch" >
-            <select class="form-control col-sm-6" ng-model="meses" ng-options="numbers for numbers in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]"
-            >
-              <option value="">Meses sin intereses</option>  
-            </select>
+              <input type="number" name="enganche" class="form-control col-sm-6"  placeholder="Enganche" ng-model="hitch" >
+              <p ng-show="cotizacion.enganche.$invalid && !cotizacion.enganche.$pristine || upThan(bill.afterTax,hitch) || upThan(hitch,0) " class="text-danger">Monto de enganche no valido </p>
+              <select class="form-control col-sm-6" ng-model="meses" ng-options="numbers for numbers in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]"
+              >
+                <option value="">Meses sin intereses</option>  
+              </select>
+              
+            </form>
 
           </div>
 
