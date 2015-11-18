@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cotizacion</title>
+    <link rel="stylesheet" href="style.css" media="all" />
+  </head>
+  <body>
+
+    <header class="clearfix">
+      <div id="logo">
+        <img src="/vidalta.png">
+      </div>
+      <h1>Cotización</h1>
+      <div id="company" class="clearfix">
+        <div>Vidalta</div>
+        <div>Bosques de Pirules esq. con Av. Stim <br />Lomas del Chamizal<br/>México,D.F.</div>
+        <div>11632100</div>
+        <div><a href="mailto:ventas@vidalta.com.mx">ventas@vidalta.com.mx</a></div>
+      </div>
+      <div id="project">
+        <div><span>MODELO</span>{{$cotizacion->modelo}}</div>
+        <div><span>N°</span>{{$cotizacion->departamento}}</div>
+        <div><span>EMAIL</span> <a href="#">{{$cotizacion->email}}</a></div>
+        <div><span>FECHA</span>{{$cotizacion->created_at}}</div>
+      </div>
+    </header>
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th class="seccion">Concepto</th>
+            <th class="seccion">Articulo</th>
+            <th colspan="2" class="seccion">Costo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Empieza una sub seccion -->
+          <tr>
+            <th colspan="4">Base</th>
+          </tr>
+          <tr>
+            <td>Baños</td>
+            <td>Baño Ceramico</td>
+            <td colspan="2" class="right">Incluido</td>
+          </tr>
+          <tr>
+            <td>Pisos</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$3,200.00</td>
+          </tr>
+          <tr>
+            <td>SEO</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">Incluido</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+            <!-- Empieza una sub seccion -->
+            <!-- Empieza una sub seccion -->
+          <tr>
+            <td>Baños</td>
+            <td>Baño Ceramico</td>
+            <td colspan="2" class="right">Incluido</td>
+          </tr>
+          <tr>
+            <td>Pisos</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$3,200.00</td>
+          </tr>
+          <tr>
+            <td>SEO</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">Incluido</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+
+
+
+          <tr>
+            <th colspan="4">Base</th>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+
+
+          <tr>
+            <th colspan="4">Adicionales</th>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+          <tr>
+            <td>Training</td>
+            <td>Articulo</td>
+            <td colspan="2" class="right">+$160.00</td>
+          </tr>
+           
+
+          <tr>
+            <td colspan="3" class="grand right">Sub Total</td>
+            <td class=" grand right">$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="right">IVA 16%</td>
+            <td class="right">$1,300.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="seccion total right ">TOTAL</td>
+            <td class="seccion total right ">$6,500.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class=" right info">Enganche</td>
+            <td class=" right info">-$1,500.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="  right info">A pagar en mesualidades</td>
+            <td class="  right info">$5,000.00</td>
+          </tr>
+          <tr>
+            <td colspan="3" class="  right info">Mesualidad a 24 meses</td>
+            <td class="  right info">$208.83</td>
+          </tr>
+
+           <!-- Empieza una sub seccion -->
+
+        </tbody>
+      </table>
+
+
+    <footer>
+      <b>Aviso de privacidad y notas, vigencia, etc.</b> 
+
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+    </footer>
+  </body>
+</html>
