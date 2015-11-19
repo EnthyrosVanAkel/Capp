@@ -44,7 +44,7 @@
 
   </head>
 
-  <body class=" container image-container vertical-center"  ng-app="app">
+  <body class=" container image-container vertical-center"  ng-app="app" id="ng-app">
 
       <div class=" card col-sm-10 wizard-body" ng-controller="generalCtrl">
          

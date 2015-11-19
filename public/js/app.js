@@ -4,11 +4,11 @@ var modelos = [
     "A","A Izquierda","B","B Izquierda","B2","C","D","D Izquierda","D Penthouse","E","E Penthouse","F","F Penthouse","G"
 ];
 
-// var deptos_url = 'http://localhost:8000/api/v1/lista';
-// var login_url = 'http://localhost:8000/api/v2/acceso';
-var deptos_url = 'json/deptos.json';
-var login_url = 'json/demo.json';
-var post_url = 'json/deptos.json';
+var deptos_url = 'http://localhost:8000/api/v1/lista';
+var login_url = 'http://localhost:8000/api/v2/acceso';
+//var deptos_url = 'json/deptos.json';
+//var login_url = 'json/demo.json';
+var post_url = 'http://localhost:8000/api/v1/get_data';
 
  /**********************************************************************************************************
  Config APP
@@ -387,7 +387,7 @@ app.controller('billCtrl', function($scope, secciontFactory, billService){
  logInCtrl
 **********************************************************************************************************/
 
-app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAlert) {
+app.controller('logInCtrl', function($scope, navService, billService , secciontFactory,SweetAlert) {
 
     $scope.deptos_url = deptos_url;
     $scope.login_url = login_url;
@@ -400,20 +400,18 @@ app.controller('logInCtrl', function($scope, navService, secciontFactory,SweetAl
                 var depto = deptos[i].depto;
                 $scope.models.push(depto);
             };
-            console.log($scope.models);
         });
     
     $scope.submit = function(valid){ 
         if(valid){
             
-            navService.userEmail = this.userEmail;
-            navService.deptoModel = this.userModel;
-            navService.deptoNumber = this.userDepto;
+            billService.userEmail = this.userEmail;
+            billService.deptoModel = this.userModel;
+            billService.deptoNumber = this.userDepto;
 
             var post = {};
             post.modelo = this.userModel;
             post.acceso = this.userPassword;
-            console.log(post);
 
             secciontFactory.save(post, login_url)
                 .success(function(data){
@@ -710,30 +708,40 @@ app.controller('sendCtrl', function($scope,SweetAlert,navService, billService, s
             // this.iva = 0;
             // this.afterTax = 0;
 
-        var post = {};
+        var post_bill = {};
 
-        post.modelo = billService.deptoModel ;
-        post.numero = billService.deptoNumber ;
-        post.correo = billService.userEmail ;
-        post.default = billService.billArray ;
-        post.escoger = billService.billAcabados ;
-        post.opcionales = billService.billAditional ;
-        post.tax = {};
-        post.tax.subTotal = billService.totalBill;
-        post.tax.iva = billService.iva;
-        post.tax.total = billService.afterTax;
-        post.tax.enganche = billService.hitch;
-        post.tax.aEnganche = billService.afterTax - billService.hitch;
-        post.tax.meses = billService.meses;
-        post.tax.pMeses = post.tax.aEnganche / billService.meses;
+        post_bill.modelo = billService.deptoModel ;
+        post_bill.numero = billService.deptoNumber ;
+        post_bill.correo = billService.userEmail ;
+        post_bill.default = billService.billArray ;
+        post_bill.default_l = billService.billArray.length ;
+        post_bill.escoger = billService.billAcabados ;
+        post_bill.escogert_l = billService.billAcabados.length ;
+        post_bill.opcionales = billService.billAditional ;
+        post_bill.opcionales_l = billService.billAditional.length ;
+        post_bill.arquitecto = billService.arqSelect ;
+        post_bill.arquitecto_l = billService.arqSelect.length ;
+        post_bill.tax = {};
+        post_bill.tax.subTotal = billService.totalBill;
+        post_bill.tax.iva = billService.iva;
+        post_bill.tax.total = billService.afterTax;
+        post_bill.tax.enganche = billService.hitch;
+        post_bill.tax.aEnganche = billService.afterTax - billService.hitch;
+        post_bill.tax.meses = billService.meses;
+        post_bill.tax.pMeses = post_bill.tax.aEnganche / billService.meses;
 
+    
+        console.log(post_bill);
 
-        secciontFactory.save(post, post_url)
+        secciontFactory.save(post_bill, post_url)
                 .success(function(data){
                     console.log(data);
+                    var url_pdf = data;
+
+
                     $scope.send = false;
                     SweetAlert.swal({
-                       title: "Enviado a: "+ navService.userEmail,
+                       title: "Enviado a: "+ billService.userEmail,
                        text: "La cotizacion se envio con exito. ¿Desae cerrar terminar?",
                        type: "success",
                        showCancelButton: false,
@@ -744,7 +752,7 @@ app.controller('sendCtrl', function($scope,SweetAlert,navService, billService, s
                        closeOnConfirm: true}, 
                     function(){ 
                          var strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
-                         var URL = "https://www.google.com";
+                         var URL = url_pdf;
                          var win = window.open(URL, "_blank");
                     });
 

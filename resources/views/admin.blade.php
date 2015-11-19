@@ -85,7 +85,7 @@
               </a>
             </li>
             <li>
-              <a href="/admin/logout">
+              <a href="0">
                 <i class="fa fa-sign-out"></i> <span>Cerran Sesión</span>
               </a>
             </li>

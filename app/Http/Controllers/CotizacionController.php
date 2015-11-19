@@ -86,7 +86,9 @@ class CotizacionController extends Controller
         $pdf->loadHTML($view);
         $nombre= $cotizacion->id;
         $nombre= $nombre . '.pdf';
-        return $pdf->download($nombre);
+        $pdf->save(public_path().'/pdf/'.$nombre);
+        //return $pdf->download($nombre);
+        return $pdf->stream();
     }
 
     /**
