@@ -97,7 +97,7 @@ Route::get('api/opcionalop/{id}','OpcionalOptionsController@show');
 //Route::get('api/v0/{id}','ApiController@acceso');
 Route::get('api/v1/lista','ApiController@lista');
 Route::get('api/v2/acceso', ['uses' => 'ApiController@acessos','middleware'=>'catalogo']);
-Route::get('api/v1/get_data','ApiController@get_datax');
+Route::get('api/v1/get_data','ApiController@get_data');
 Route::get('api/v1/pdf/{id}','ApiController@hacerpdf');
 //Route::get('api/v2/acceso','ApiController@acessos',['middleware'=>'catalogo']);
 //Route::get('api/v2/acceso','ApiController@acessos');

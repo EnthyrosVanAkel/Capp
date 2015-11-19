@@ -101,7 +101,8 @@ class ApiController extends Controller
         return $url;
         
     }
-
+}
+/*
 public function get_datax(Request $request){
         $cotizacion = new Cotizacion();
         $modelo = $request->input('modelo');
@@ -115,8 +116,7 @@ public function get_datax(Request $request){
         
         //$input = $request->input('default.0');
         for ($i=0; $i < 3; $i++) { 
-            $defaults = array();
-            array_push($defaults,$request->input('default.'.$i))
+            $default.$i =$request->input('default.'.$i)
 
         }
         //$defaults[] = array($input);
@@ -158,4 +158,5 @@ public function get_datax(Request $request){
         return $defaults;
         
     }
-}
+    /*
+
