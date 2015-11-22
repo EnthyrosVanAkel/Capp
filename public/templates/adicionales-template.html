@@ -1,0 +1,37 @@
+<ul class="nav sub-nav-pills" >
+  <li class="tab-size" style="width:<%getTabSize()%>%;"  ng-repeat="section in sectionsData" ng-class="{active:sectionActive($index)}">
+    <a href="#/" data-toggle="tab">
+      <%section.seccion%>
+    </a>
+  </li>
+</ul>  
+
+ 
+
+<!-- Panel Selectio-->
+<div class=" col-sm-10 col-sm-offset-1">
+  <div class="thumbnail-box" ng-repeat="section in sectionsData" ng-show="sectionActive($index)">
+
+      <!-- Ficha -->
+      <div class="thumbnail col-xs-4" ng-repeat="item in section.opcionaloptions">
+        <img ng-src="/imgs/<%item.url_img%>" width="150px" >
+        <div class="caption">
+          <h4>
+            <samp class="product-text"><%item.nombre%></samp>
+            <br/>
+            <small ng-class="{include:item.checked , noneInclude:(!item.checked)}" >
+              <%item.basePrice | priceFilter%>
+            </small>
+          </h4>
+          <!-- <p class="text-left">
+            <br/>
+            <%item.description%>
+          </p> -->
+           <div class="text-center">
+              <input type="checkbox" id="<%item.id%>" ng-disabled="item.disabled" ng-checked="item.checked" ng-model="item.checked"  ng-click="updateBill(section,item)"/>
+              <label for="<%item.id%>"></label>
+          </div>
+        </div>
+      </div> <!-- End Ficha -->
+  </div>
+</div>
