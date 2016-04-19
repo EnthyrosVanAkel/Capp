@@ -781,3 +781,5 @@ app.filter("priceFilter", function() {
         };
     };
 });
+
+
